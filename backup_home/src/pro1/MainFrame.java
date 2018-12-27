@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame implements ActionListener{
 
 	private DBcon myDBcon;
+	
 	JPanel contentPane;
 	JMenu mSalesmenu, mStockmenu,mAdmMenu,mLogoutMenu;
 	JMenuItem mSalesReg, mSalesStatus,mStock, mLogout,mNewProdReg,mProdInfoModify,mAccount;
@@ -71,8 +72,8 @@ public class MainFrame extends JFrame implements ActionListener{
 
 		// contentPane.add("패널별명", new 패널());
 		contentPane.add("SalesReg", new SalesReg(myDBcon)); //판매등록
-		contentPane.add("SalesStatus", new SalesStatus()); //판매현황
-		contentPane.add("Stock", new StockSearch()); //재고조회
+		contentPane.add("SalesStatus", new SalesStatus(myDBcon)); //판매현황
+		contentPane.add("Stock", new StockSearch(myDBcon)); //재고조회
 		contentPane.add("NewProdReg", new NewProReg()); //신상품등록
 		contentPane.add("ProdInfoModify", new ProdInfoModify()); // 상품정보 수정 
 		contentPane.add("Account", new AccountLookupCreate()); // 계정조희 및 생성
@@ -115,13 +116,11 @@ public class MainFrame extends JFrame implements ActionListener{
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, 
 					null, option, option[1]);
 			
-			if(result == 0) {
-				// 예
-				// 로그인 화면으로 이동
+			if(result == 0) { // 예  
+				// +)로그인 화면으로 이동
+				myDBcon.disconn();
 				dispose();
-			} else {
-				// 아니오
-			}			
+			} 			
 		}
 	}
 

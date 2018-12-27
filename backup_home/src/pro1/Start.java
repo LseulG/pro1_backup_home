@@ -12,6 +12,7 @@ public class Start {
 		start.loginView.setMain(start); // 로그인창에게 메인 클래스 보내기
 	}
 	
+	// 로그인 된 계정 받아와서 myDBcon에 넘겨주기
 	public void setDBcon(DBcon dbcon) {
 		this.myDBcon=dbcon;
 	}

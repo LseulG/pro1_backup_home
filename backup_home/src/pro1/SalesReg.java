@@ -28,7 +28,7 @@ public class SalesReg extends JPanel implements ActionListener{
 	private JLabel lab, lblDiv, lblCode, lblColor, lblSize, lblPrice, lblQty, lblSqty, lblSprice;
 	private JTextField txtCode, txtPrice, txtQty, txtSqty, txtSprice;
 	private JButton btnSearch, btnReg, btnDelete;
-	private JComboBox divCB, colorCB, sizeCB;
+	private JComboBox<String> divCB, colorCB, sizeCB;
 	
 	private DBcon myDBcon;
 	
@@ -44,9 +44,12 @@ public class SalesReg extends JPanel implements ActionListener{
 	 * currDate.getDayOfWeek() 요일
 	 */
 
+	private void setDBcon(DBcon dbcon) {
+		myDBcon = dbcon;
+	}
+	
 	public SalesReg(DBcon dbcon) {
 		setDBcon(dbcon);
-		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		// 1
@@ -74,16 +77,15 @@ public class SalesReg extends JPanel implements ActionListener{
 		firstSc.setPreferredSize(new Dimension(450, 80));
 		add(firstSc);
 		
-		// 3 수정
+		// 3
 		JPanel panel = new JPanel();	add(panel);
-		
 		JPanel p2 = new JPanel();
 		panel.add(p2);
 		p2.setLayout(new GridLayout(2, 9, 0, 5));
-			
+		
 			// 1행
 		lblDiv = new JLabel(" 구분");		p2.add(lblDiv);		
-		divCB = new JComboBox(divS);
+		divCB = new JComboBox<String>(divS);
 		p2.add(divCB);
 		
 		lblCode = new JLabel(" 품번");	p2.add(lblCode);		
@@ -91,12 +93,12 @@ public class SalesReg extends JPanel implements ActionListener{
 		p2.add(txtCode);
 		
 		lblColor = new JLabel(" 색상"); 	p2.add(lblColor);		
-		colorCB = new JComboBox();
+		colorCB = new JComboBox<String>();
 		dbcon.combo_color(colorCB);
 		p2.add(colorCB);
 		
 		lblSize = new JLabel(" 사이즈");	p2.add(lblSize);		
-		sizeCB = new JComboBox(sizeS);
+		sizeCB = new JComboBox<String>(sizeS);
 		p2.add(sizeCB);
 		
 		btnSearch = new JButton("조회");
@@ -131,10 +133,11 @@ public class SalesReg extends JPanel implements ActionListener{
 		p2.add(btnReg);
 				
 		// 4 - 클릭해서 삭제	
-		String secTabName[] = { "구분", "품번", "색상", "사이즈", "판매단가", "수량", "실판매금액"};
-		Object secData[][] = { { "판매", "1", "BK", "S", "5000", "1", "5000" },
-				{ "반품", "2", "WH", "M", "7000", "1", "7000" },
-				{ "판매", "3", "BK", "L", "6000", "1", "6000" } };
+		String secTabName[] = { "번호", "구분", "품번", "색상", "사이즈", "판매단가", "수량", "실판매금액"};
+//		Object secData[][] = { { "판매", "1", "BK", "S", "5000", "1", "5000" },
+//				{ "반품", "2", "WH", "M", "7000", "1", "7000" },
+//				{ "판매", "3", "BK", "L", "6000", "1", "6000" } };
+		Object secData[][] = new Object[0][8];
 		secTabModel = new DefaultTableModel(secData, secTabName){
 			public boolean isCellEditable(int row, int col) {
 				return false; // 테이블 수정 못하게
@@ -164,9 +167,7 @@ public class SalesReg extends JPanel implements ActionListener{
 			t2ColModel.getColumn(i).setCellRenderer(tCellRenderer);
 	}
 
-	private void setDBcon(DBcon dbcon) {
-		myDBcon = dbcon;
-	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -177,33 +178,27 @@ public class SalesReg extends JPanel implements ActionListener{
 		String s_qty = txtSqty.getText();
 		String s_price = txtSprice.getText();
 		
-		
-		
 		if (e.getSource() == btnSearch) {			//조회
 			myDBcon.pro_select(no,color,size);
 			
 			//판매단가, 재고 가져오기 +)상품코드가져오기
 			String price = myDBcon.getPrice().toString();
 			String qty = myDBcon.getQty().toString();
-			this.code = myDBcon.getCode();
 			
 			txtPrice.setText(price);	txtQty.setText(qty);
 			txtSqty.setText("1");	txtSprice.setText(price);	
 		}
 		
 		if (e.getSource() == btnReg) {			//등록
-			//dbcon = new DBcon();
-			
-			//테이블에 내역 추가			
-			myDBcon.pro_reg(secTab,currDate,group,code,s_qty,s_price);			
-			
-//			dbcon.clear(secTab);
-//			dbcon.pro_reg(secTab,currDate,group,code,s_qty,s_price);
-		
+			//테이블에 내역 추가	
+			myDBcon.clear(secTab);
+			myDBcon.pro_reg(secTab,group,s_qty,s_price);			
 		}	
 		if (e.getSource() == btnDelete) {			//삭제
 			//선택한 테이블 행 삭제
 			//선택한 테이블 데이터 넘기기
 		}
+		
+		
 	}
 }
