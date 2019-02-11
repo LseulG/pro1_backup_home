@@ -33,8 +33,23 @@
         	<form action="#">
         	<div class="fields col-lg-12">
 				<div class="row">
+					<!-- 지역1 -->
+		        	<div class="form-group col-md-2 ftco-animate">
+		                <div class="select-wrap one-third">
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control" placeholder="Keyword search">
+		                      	<option value="">전국</option>
+		                      	<option value="">서울</option>
+		                      	<option value="">경기</option>
+		                      	<option value="">강원도</option>
+		                      	<option value="">경상도</option>
+		                      	<option value="">전라도</option>
+		                    </select>
+	                  	</div>
+		            </div>
+		            
 					<!-- 일정(계획/후기) -->
-        			<div class="form-group col-md-3 ftco-animate">
+        			<div class="form-group col-md-2 ftco-animate">
 		            	<div class="select-wrap one-third">
 		                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
 		                    <select name="" id="" class="form-control" placeholder="Keyword search">
@@ -46,7 +61,7 @@
         			</div>
         			
         			<!-- 검색기간 -->
-		            <div class="form-group col-md-3 ftco-animate">
+		            <div class="form-group col-md-2 ftco-animate">
 		                <div class="select-wrap one-third">
 		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 		                    <select name="" id="" class="form-control" placeholder="Keyword search">
@@ -62,7 +77,7 @@
 		            </div>
 		            
 		            <!-- 테마 -->
-		            <div class="form-group col-md-3 ftco-animate">
+		            <div class="form-group col-md-2 ftco-animate">
 		                <div class="select-wrap one-third">
 		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 		                    <select name="" id="" class="form-control" placeholder="Keyword search">
@@ -78,7 +93,7 @@
 		            </div>
 		            
 		            <!-- 정렬 -->
-		            <div class="form-group col-md-3 ftco-animate">
+		            <div class="form-group col-md-2 ftco-animate">
 		                <div class="select-wrap one-third">
 		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 		                    <select name="" id="" class="form-control" placeholder="Keyword search">
@@ -87,6 +102,21 @@
 		                    </select>
 	                  	</div>
 		            </div>
+		            
+		            <!-- 여행기간 -->
+		        	<div class="form-group col-md-2 ftco-animate">
+		            	<div class="range-slider">
+		              		<label for="name">여행기간</label>
+		              		<span>
+								<input type="number" value="1" min="1" max="60"/>일  -
+								<input type="number" value="60" min="1" max="60"/>일
+							</span>
+							<p>
+								<input value="1" min="1" max="60" step="1" type="range"/>
+								<input value="60" min="1" max="60" step="1" type="range"/>
+							</p>
+						</div>
+		        	</div>
 				</div>
 				<!-- row -->				
 				<div class="row">
@@ -126,6 +156,90 @@
 <!-- 목록들 -->
         	<div class="row">
 				<div class="col-md-4 ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-1.jpg);">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-search2"></span>
+	    				</div>
+		    		</a>
+		    		<div class="text p-3">
+		    			<div class="d-flex">
+				    		<h3><a href="#">여행 제목이 들어갑니다!! </a></h3>
+		    			</div>
+		    			<p>#전라남도 #여수 #순천 #광양 #저기 <br>#봄 #나혼자.</p>
+		    			<br>
+		    			<p class="days"><span>18.08.18 - 18.09.18 (30일)</span></p>
+		    			<hr>
+		    			<p class="bottom-area d-flex">
+		    				<span><i class="icon-person"></i> 작성자id</span> <!-- icon변경 -->
+		    				<span class="ml-auto">후기</span>
+		    			</p>
+		    		</div>
+				</div>
+
+				<div class="col-md-4 ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-2.jpg);">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-search2"></span>
+	    				</div>
+		    		</a>
+		    		<div class="text p-3">
+		    			<div class="d-flex">
+				    		<h3><a href="#">여행 제목이 들어갑니다!! </a></h3>
+		    			</div>
+		    			<p>#전라남도 #여수 #순천 #광양 #저기 <br>#봄 #나혼자.</p>
+		    			<br>
+		    			<p class="days"><span>18.08.18 - 18.09.18 (30일)</span></p>
+		    			<hr>
+		    			<p class="bottom-area d-flex">
+		    				<span><i class="icon-person"></i> 작성자id</span> <!-- icon변경 -->
+		    				<span class="ml-auto">후기</span>
+		    			</p>
+		    		</div>
+				</div>		
+				
+				<div class="col-md-4 ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-search2"></span>
+	    				</div>
+		    		</a>
+		    		<div class="text p-3">
+		    			<div class="d-flex">
+				    		<h3><a href="#">여행 제목이 들어갑니다!! </a></h3>
+		    			</div>
+		    			<p>#전라남도 #여수 #순천 #광양 #저기 <br>#봄 #나혼자.</p>
+		    			<br>
+		    			<p class="days"><span>18.08.18 - 18.09.18 (30일)</span></p>
+		    			<hr>
+		    			<p class="bottom-area d-flex">
+		    				<span><i class="icon-person"></i> 작성자id</span> <!-- icon변경 -->
+		    				<span class="ml-auto">후기</span>
+		    			</p>
+		    		</div>
+				</div>			
+				
+				<div class="col-md-4 ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-4.jpg);">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-search2"></span>
+	    				</div>
+		    		</a>
+		    		<div class="text p-3">
+		    			<div class="d-flex">
+				    		<h3><a href="#">여행 제목이 들어갑니다!! </a></h3>
+		    			</div>
+		    			<p>#전라남도 #여수 #순천 #광양 #저기 <br>#봄 #나혼자.</p>
+		    			<br>
+		    			<p class="days"><span>18.08.18 - 18.09.18 (30일)</span></p>
+		    			<hr>
+		    			<p class="bottom-area d-flex">
+		    				<span><i class="icon-person"></i> 작성자id</span> <!-- icon변경 -->
+		    				<span class="ml-auto">후기</span>
+		    			</p>
+		    		</div>
+				</div>	
+				
+				<div class="col-md-4 ftco-animate destination">
 		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-5.jpg);">
 			    		<div class="icon d-flex justify-content-center align-items-center">
 	    					<span class="icon-search2"></span>
@@ -140,148 +254,33 @@
 		    			<p class="days"><span>18.08.18 - 18.09.18 (30일)</span></p>
 		    			<hr>
 		    			<p class="bottom-area d-flex">
-		    				<span><i class="icon-map-o"></i> 작성자id</span> <!-- icon변경 -->
-		    				<span class="ml-auto">후기기</span>
+		    				<span><i class="icon-person"></i> 작성자id</span> <!-- icon변경 -->
+		    				<span class="ml-auto">후기</span>
 		    			</p>
 		    		</div>
-				</div>
+				</div>									
 				
+				<div class="col-md-4 ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-6.jpg);">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-search2"></span>
+	    				</div>
+		    		</a>
+		    		<div class="text p-3">
+		    			<div class="d-flex">
+				    		<h3><a href="#">여행 제목이 들어갑니다!! </a></h3>
+		    			</div>
+		    			<p>#전라남도 #여수 #순천 #광양 #저기 <br>#봄 #나혼자.</p>
+		    			<br>
+		    			<p class="days"><span>18.08.18 (당일)</span></p>
+		    			<hr>
+		    			<p class="bottom-area d-flex">
+		    				<span><i class="icon-person"></i> 작성자id</span> <!-- icon변경 -->
+		    				<span class="ml-auto">후기</span>
+		    			</p>
+		    		</div>
+				</div>					
 				
-				
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-2.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="#">여행제목 2222</a></h3>
-			    						</div>
-			    						<div class="two">
-			    							<span class="price">계획</span>
-		    							</div>
-		    						</div>
-		    						<p>2018.08.18 - 2018.08.28</p>
-		    						<p class="days"><span>10 days</span></p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 작성자id</span> 
-		    							<span class="ml-auto">후기기</span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="#">제목 3333333</a></h3>
-			    						</div>
-			    						<div class="two">
-			    							<span class="price">후기</span>
-		    							</div>
-		    						</div>
-		    						<p>2018.05.18 - 20018.05.20 </p>
-		    						<p class="days"><span>3 days</span></p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 전라남도</span> 
-		    							<span class="ml-auto"><a href="#">Discover</a></span>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-4.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="#">제목44444</a></h3>
-			    						</div>
-		    						</div>
-		    							<p class="days"><span>2018.08.18-2018.08.28 (10일)</span></p>
-		    							<p>#전라남도 #여수 #순천 #광양 #여수 #겨울 #친구끼리</p><br>
-		    						<hr>
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<i class="icon-map-o"></i> 작성자a
-			    						</div>
-			    						<div class="two">
-			    							후기
-		    							</div>
-		    						</div>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-5.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="#">5555555555555555</a></h3>
-			    						</div>
-
-		    						</div>
-		    							<p>#전라남도 #여수 #순천 #광양 #저기 <br>#봄 #나혼자.</p><br>
-		    							<p class="days"><span>2018.08.18-2018.09.18 (30일)</span></p>
-		    						<hr>
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<i class="icon-map-o"></i> 작성자b
-			    						</div>
-			    						<div class="two">
-			    							후기
-		    							</div>
-		    						</div>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-		    					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-6.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-		    					</a>
-		    					<div class="text p-3">
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<h3><a href="#">제목 6번입니당</a></h3>
-			    						</div>
-		    						</div>
-		    							<p class="days"><span>2018.08.18 (당일)</span></p>
-		    							<p>#제주도 #겨울 #가족끼리</p><br>
-		    						<hr>
-		    						<div class="d-flex">
-		    							<div class="one">
-				    						<i class="icon-map-o"></i> 작성자c
-			    						</div>
-			    						<div class="two">
-			    							계획
-		    							</div>
-		    						</div>
-		    					</div>
-		    				</div>
-		    			</div>
           	</div>
 <!-- 목록들 END -->
 
