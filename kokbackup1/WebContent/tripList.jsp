@@ -3,56 +3,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>KokKok</title>
+  	<%@ include file="include/link.jsp"%>
   </head>
   <body>
-    
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.jsp">방방콕콕</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
-
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.jsp" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="about.jsp" class="nav-link">About</a></li>
-          <li class="nav-item active"><a href="tour.jsp" class="nav-link">Tour</a></li>
-          <li class="nav-item"><a href="hotel.jsp" class="nav-link">Hotels</a></li>
-          <li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li>
-          <li class="nav-item cta"><a href="contact.jsp" class="nav-link"><span>Add listing</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <!-- END nav -->
-    
+   <%@ include file="include/nav.jsp"%>
+   <!-- 내용 -->
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_3.jpg');">
       <div class="overlay"></div>
       <div class="container">
@@ -71,39 +27,80 @@
         <div class="row">
         	<div class="col-lg-3 sidebar ftco-animate">
         		<div class="sidebar-wrap bg-light ftco-animate">
-        			<h3 class="heading mb-4">일정 검색</h3>
+        			<h3 class="heading mb-4">검색 옵션</h3>
         			<form action="#">
         				<div class="fields">
-		              <div class="form-group">
-		                <input type="text" class="form-control" placeholder="지역/도시">
+        			  <div class="form-group">
+		                <input type="text" class="form-control" placeholder="지역/장소 검색">
+		              </div>
+        			  <div class="form-group">
+		                <div class="select-wrap one-third">
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control" placeholder="Keyword search">
+		                      <option value="">모든 일정</option>
+		                      <option value="">여행 계획</option>
+		                      <option value="">여행 후기</option>
+		                    </select>
+	                  	</div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
-	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control" placeholder="Keyword search">
-	                      <option value="">전체</option>
-	                      <option value="">여행 계획</option>
-	                      <option value="">여행 후기</option>
-	                    </select>
-	                  </div>
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control" placeholder="Keyword search">
+		                      <option value="">조회기간 전체</option>
+		                      <option value="">1일</option>
+		                      <option value="">1주</option>
+		                      <option value="">1개월</option>
+		                      <option value="">6개월</option>
+		                      <option value="">1년</option>
+		                    </select>
+	                  	</div>
 		              </div>
+		              <div class="form-group">
+		                <div class="select-wrap one-third">
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control" placeholder="Keyword search">
+		                      <option value="">테마 전체</option>
+		                      <option value="">나혼자</option>
+		                      <option value="">친구랑</option>
+		                      <option value="">가족과</option>
+		                      <option value="">단체</option>
+		                      <option value="">패키지</option>
+		                      <option value="">커플</option>
+		                    </select>
+	                  	</div>
+		              </div>
+		              <div class="form-group">
+		                <div class="select-wrap one-third">
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control" placeholder="Keyword search">
+		                      <option value="">인기순</option>
+		                      <option value="">최신순</option>
+		                    </select>
+	                  	</div>
+		              </div>
+		              <!--  달력
 		              <div class="form-group">
 		                <input type="text" id="checkin_date" class="form-control" placeholder="여행 시작일">
 		              </div>
 		              <div class="form-group">
 		                <input type="text" id="checkin_date" class="form-control" placeholder="여행 마지막일">
 		              </div>
+		               -->
 		              <div class="form-group">
 		              	<div class="range-slider">
+		              		<label for="name">여행기간</label>
 		              		<span>
-										    <input type="number" value="25000" min="0" max="120000"/>	-
-										    <input type="number" value="50000" min="0" max="120000"/>
-										  </span>
-										  <input value="1000" min="0" max="120000" step="500" type="range"/>
-										  <input value="50000" min="0" max="120000" step="500" type="range"/>
-										  </svg>
-										</div>
+								<input type="number" value="1" min="1" max="60"/>일  -
+								<input type="number" value="60" min="1" max="60"/>일
+							</span>
+							<p>
+								<input value="1" min="1" max="60" step="1" type="range"/>
+								<input value="60" min="1" max="60" step="1" type="range"/>
+							</p>
+						</div>
 		              </div>
+		              
 		              <div class="form-group">
 		                <input type="submit" value="검색" class="btn btn-primary py-3 px-5">
 		              </div>
@@ -162,18 +159,29 @@
 		    					<div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="#">여행제목1 입니다</a></h3>
+				    						<h3><a href="#">여행제목1 입니다d</a></h3>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price">후기</span>
 		    							</div>
 		    						</div>
-		    						<p>2018.05.18 - 20018.05.20</p>
-		    						<p class="days"><span>3 days</span></p>
+		    						<!--  <div class="tag-widget post-tag-container mb-5 mt-5"> -->
+							              <div class="tagcloud">
+							                <a href="#" class="tag-cloud-link location">전라남도</a>
+							                <a href="#" class="tag-cloud-link location">여수</a>
+							                <a href="#" class="tag-cloud-link location">순천</a>
+							                <a href="#" class="tag-cloud-link location">광양</a>
+							              </div>
+							           <!-- </div>-->
+		    						<p>2018.05.18 - 20018.05.20 (3일)</p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 강원도 강릉시</span> 
-		    							<span class="ml-auto"><a href="#">찜하기</a></span>
+		    							<!--  <div class="tag-widget post-tag-container mb-5 mt-5"> -->
+							              <div class="tagcloud">
+							                <a href="#" class="tag-cloud-link season">겨울</a>
+							                <a href="#" class="tag-cloud-link thema">친구끼리</a>
+							              </div>
+							           <!-- </div>-->
 		    						</p>
 		    					</div>
 		    				</div>
@@ -241,28 +249,19 @@
 		    						<div class="d-flex">
 		    							<div class="one">
 				    						<h3><a href="#">제목44444</a></h3>
-				    						<!-- 
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
-				    						 -->
+			    						</div>
+		    						</div>
+		    							<p class="days"><span>2018.08.18-2018.08.28 (10일)</span></p>
+		    							<p>#전라남도 #여수 #순천 #광양<br>#여수 #겨울 #친구끼리</p><br>
+		    						<hr>
+		    						<div class="d-flex">
+		    							<div class="one">
+				    						<i class="icon-map-o"></i> 작성자a
 			    						</div>
 			    						<div class="two">
-			    							<span class="price">후기</span>
+			    							후기
 		    							</div>
 		    						</div>
-		    						<p>전라남도 여수 순천 광양 <br> 여름 여자끼리</p>
-		    						<p class="days"><span>2018.08.18-2018.08.28 (10일)</span></p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 전라남도</span> 
-		    							<span class="ml-auto"><a href="#">찜♡</a></span>
-		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -278,17 +277,19 @@
 		    							<div class="one">
 				    						<h3><a href="#">5555555555555555</a></h3>
 			    						</div>
+
+		    						</div>
+		    							<p>#전라남도 #여수 #순천 #광양<br>#저기 #봄 #나혼자.</p><br>
+		    							<p class="days"><span>2018.08.18-2018.09.18 (30일)</span></p>
+		    						<hr>
+		    						<div class="d-flex">
+		    							<div class="one">
+				    						<i class="icon-map-o"></i> 작성자b
+			    						</div>
 			    						<div class="two">
-			    							<span class="price">계획</span>
+			    							후기
 		    							</div>
 		    						</div>
-		    						<p>전라남도 여수 순천 광양 <br> 가을 겨울 나혼자</p>
-		    						<p class="days"><span>2018.08.18-2018.09.18 (30일)</span></p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 전국</span> 
-		    							<span class="ml-auto"><a href="#">찜♥</a></span>
-		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -304,17 +305,18 @@
 		    							<div class="one">
 				    						<h3><a href="#">제목 6번입니당</a></h3>
 			    						</div>
+		    						</div>
+		    							<p class="days"><span>2018.08.18 (당일)</span></p>
+		    							<p>#제주도 #겨울 #가족끼리</p><br>
+		    						<hr>
+		    						<div class="d-flex">
+		    							<div class="one">
+				    						<i class="icon-map-o"></i> 작성자c
+			    						</div>
 			    						<div class="two">
-			    							<span class="price">후기</span>
+			    							계획
 		    							</div>
 		    						</div>
-		    						<p>제주도 <br> 봄 커플끼리</p>
-		    						<p class="days"><span>2018.08.18 (당일치기)</span></p>
-		    						<hr>
-		    						<p class="bottom-area d-flex">
-		    							<span><i class="icon-map-o"></i> 제주도</span> 
-		    							<span class="ml-auto"><a href="#">찜꽁</a></span>
-		    						</p>
 		    					</div>
 		    				</div>
 		    			</div>
