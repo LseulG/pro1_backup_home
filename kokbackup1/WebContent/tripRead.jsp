@@ -4,6 +4,16 @@
 <html>
   <head>
     <title>KokKok</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
+    <script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new daum.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new daum.maps.Map(container, options);
+	</script>
   	<%@ include file="include/link.jsp"%>
   </head>
   <body>
@@ -61,6 +71,23 @@
 						<i class="icon-tag"></i> #전라남도 #여수 #순천 #광양 #봄 #나혼자
 					</span>
 				</p>
+			</div>
+			<br>
+			
+			<div class="text p-3">
+				<h2 class="mb-3"><i class="flaticon-meeting-point"></i> 지도 test</h2>
+				<p>지도 테스트 중입니다.</p>
+				<div id="map" style="width:500px;height:400px;"></div>
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
+				<script>
+					var container = document.getElementById('map');
+					var options = {
+						center: new daum.maps.LatLng(33.450701, 126.570667),
+						level: 3
+					};
+			
+					var map = new daum.maps.Map(container, options);
+				</script>
 			</div>
 			<br>
 			
