@@ -148,7 +148,7 @@
 							</form>
         		</div>
           </div>
-          <div class="col-lg-9">
+          	<div class="col-lg-9">
           	<div class="row">
           		<div class="col-md-12 ftco-animate">
           			<div class="single-slider owl-carousel">

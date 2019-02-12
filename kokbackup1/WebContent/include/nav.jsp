@@ -25,8 +25,8 @@
           <li class="nav-item dropdown">
        		<a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">여행 일정<span class="caret"></span></a>	      
 		        <ul class="dropdown-menu">
-		          <li><a href="#" class="dropdown-item">여행 계획</a></li>
-		          <li><a href="#" class="dropdown-item">여행 후기</a></li>		          
+		          <li><a href="tripListLeft.jsp" class="dropdown-item">여행 계획</a></li>
+		          <li><a href="tripListCenter.jsp" class="dropdown-item">여행 후기</a></li>		          
 		        </ul>
 	      </li>
 	      <li class="nav-item dropdown">
