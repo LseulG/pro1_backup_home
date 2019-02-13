@@ -13,7 +13,7 @@
     <!-- 내용 -->
     <div class="hero-wrap js-fullheight" style="background-image: url('${root}/resources/images/bg_4.jpg');">
       <div class="overlay"></div>
-      <div class="container">
+      <div class="container slcontainer">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
             <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.jsp">Home</a></span> <span class="mr-2"><a href="blog.jsp">Schedule</a></span> <span>TripRead</span></p>
@@ -148,6 +148,11 @@
 						<i class="icon-tag"></i> #전라남도 #여수 #순천 #광양 #봄 #나혼자
 					</span>
 				</p>
+			</div>		
+			<br>
+			
+			<div>
+				<h2 class="mb-3">Day 1</h2>
 			</div>
 			<br>
 			
@@ -194,7 +199,6 @@
                   		<a href="#" class="reply">답글</a>
                   	</div>
                   		<p>작성내용1 댓글이다 댓글</p>
-                   		<!-- <p><a href="#" class="reply">답글ㅎ</a></p>  -->
                   </div>
                 </li>
 
@@ -206,37 +210,42 @@
                   		<a href="#" class="reply">답글</a>
                   	</div>
                   		<p>222222</p>
-                   		<!-- <p><a href="#" class="reply">답글ㅎ</a></p>  -->
                   </div>
-                </li>
 
-                  <ul class="children">
+
+                  <ul class="slchild">
                     <li class="comment">
                       <div class="comment-body">
-                        <h3><i class="icon-person"></i> 댓글111</h3>
-                        <div class="meta">June 27, 2018 at 2:21pm</div>
-                        <p> 댓글이당111 </p>
-                        <p><a href="#" class="reply">답글</a></p>
-                      </div>
+	                  	<div class="row">
+	                  		<h3><i class="icon-person"></i> 작성자 22222</h3>
+	                  		<div class="meta">2018.08.18 2:21</div>
+	                  		<a href="#" class="reply">답글</a>
+	                  	</div>
+	                  		<p>222222</p>
+	                  </div>
 
 
-                      <ul class="children">
+                      <ul class="slchild">
                         <li class="comment">
                           <div class="comment-body">
-                            <h3><i class="icon-person"></i> 대댓글이다?</h3>
-                            <div class="meta">June 27, 2018 at 2:21pm</div>
-                            <p> 대댓글도 가능하네?</p>
-                            <p><a href="#" class="reply">답글</a></p>
-                          </div>
+		                  	<div class="row">
+		                  		<h3><i class="icon-person"></i> 작성자 22222</h3>
+		                  		<div class="meta">2018.08.18 2:21</div>
+		                  		<a href="#" class="reply">답글</a>
+		                  	</div>
+		                  		<p>222222</p>
+		                  </div>
 
-                            <ul class="children">
+                            <ul class="slchild">
                               <li class="comment">
                                 <div class="comment-body">
-                                  <h3><i class="icon-person"></i> 대대댓글이네</h3>
-                                  <div class="meta">June 27, 2018 at 2:21pm</div>
-                                  <p> 대대댓글!</p>
-                                  <p><a href="#" class="reply">답글</a></p>
-                                </div>
+				                  	<div class="row">
+				                  		<h3><i class="icon-person"></i> 작성자 22222</h3>
+				                  		<div class="meta">2018.08.18 2:21</div>
+				                  		<a href="#" class="reply">답글</a>
+				                  	</div>
+				                  		<p>222222aaaaaa</p>
+			                  	</div>
                               </li>
                             </ul>
                         </li>
@@ -247,10 +256,12 @@
 
                 <li class="comment">
                   <div class="comment-body">
-                    <h3><i class="icon-person"></i> 작성자 3333</h3>
-                    <div class="meta">June 27, 2018 at 2:21pm</div>
-                    <p> 3333333</p>
-                    <p><a href="#" class="reply">답글</a></p>
+                  	<div class="row">
+                  		<h3><i class="icon-person"></i> 작성자 22222</h3>
+                  		<div class="meta">2018.08.18 2:21</div>
+                  		<a href="#" class="reply">답글</a>
+                  	</div>
+                  		<p>222222</p>
                   </div>
                 </li>
               </ul>
@@ -258,10 +269,10 @@
               
   <!-- 댓글달기 -->           
               <div class="comment-form-wrap pt-5">
-                <form action="#" class="p-5 bg-light">
+                <form action="#" class="p-4 bg-light">
                 	<div class="form-group">
-                    	<h3 class="mb-5">댓글</h3>
-                    	<textarea name="" id="message" cols="30" rows="10" class="form-control" placeholder="내용과 무관한 댓글, 악플은 삭제될 수 있습니다. 댓글치는 칸좀 줄이자.."></textarea>
+                    	<p>댓글달기</p>
+                    	<textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="내용과 무관한 댓글, 악플은 삭제될 수 있습니다."></textarea>
                  	 </div>
                   	<div class="form-group">
                    		 <input type="submit" value="등록" class="btn py-3 px-4 btn-primary">
