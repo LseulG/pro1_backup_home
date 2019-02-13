@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>방방콕콕 - 여행 일정 상세</title>
 <%@ include file="/include/link.jsp"%>
 <link rel="stylesheet" href="${root}/resources/css/schedule.css">
 </head>
@@ -138,54 +138,49 @@
 		<div class="col-md-8 ftco-animate destination">
 			<div class="text p-3">
 				<h3 class="mb-3">소제목 입니다</h3>
-				<p>여행 내용을 간략히 소개하는 부분 입니다.<br>이 부분을 위로 12로 잡고 배경색 넣어서 올릴까요?<br>지도는 왼쪽에서 스크롤해도 따라다니게 하면 좋을것 같다. 양쪽 여백을 좀 좁혀야될거같다...<br>이 밑에 태그도 아이디 옆에 게시일 붙여버리자<br>그리고 Day1 Day2도 나눠야한다.</p>
+				<p>여행 내용을 간략히 소개하는 부분 입니다.<br>*이 부분을 위로 12로 잡고 배경색 넣어서 올릴까요?<br>지도는 왼쪽에서 스크롤해도 따라다니게 하면 좋을것 같다.<br>n일차 부분을 div, a, span, p 등으로 class 지정해주고 n일차(n) ^ 아이콘<br>밑에 부분 글씨 더 연하게 </p>
 				<hr>
 				<p class="days">
 					<span>
-						<i class="icon-person"></i> 작성자id<br>
+						<i class="icon-person"></i> 작성자id &nbsp;|&nbsp; <i class="icon-bookmark-o"></i> 북마크 : 18 &nbsp;|&nbsp; <i class="icon-thumbs-o-up"></i> 추천 : 18<br>
 						<i class="icon-today"></i> 여행기간 : 18.08.18 - 18.09.18 (30일)<br>
-						<i class="icon-pencil"></i> 게시일 : 18.08.18 수요일<br>
-						<i class="icon-tag"></i> #전라남도 #여수 #순천 #광양 #봄 #나혼자
+						<i class="icon-pencil"></i> 게시일 : 18.08.18 수요일 &nbsp;|&nbsp; <i class="icon-pencil"></i> 최종 수정일 : 18.08.18 수요일<br>
+						
 					</span>
 				</p>
 			</div>		
 			<br>
 			
-			<div>
-				<h2 class="mb-3">Day 1</h2>
-			</div>
-			<br>
-			
-			<div class="text p-3">
-            	<h2 class="mb-3"><i class="flaticon-meeting-point"></i> 제목 1. 장소</h2>
-            	<p> 내용내용 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
-            	<p><img src="${root}/resources/images/image_7.jpg" alt="" class="img-fluid"></p>
-           		<p> 내용 이어서 내용내용 Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-            </div>
-            <br>
+			<div><h2 class="mb-3">1일차</h2><hr></div>
+			<div class="sl-loc"><h5><i class="flaticon-meeting-point"></i> 장소장소장소</h5></div>
+			<div class="sl-loc"><h5><i class="flaticon-hotel"></i> 숙박숙박</h5></div>
+				<div class="sl-loc-cont p-3">
+		            <p> 2번째 내용내용 Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+		            <p><img src="${root}/resources/images/image_8.jpg" alt="" class="img-fluid"></p>
+		            <p> 내용이구영 Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
+	            </div>
+			<div class="sl-loc"><h5><i class="flaticon-fork"></i> 식당맛집식도락</h5></div>
+				<div class="sl-loc-cont p-3">
+	            	<p> 내용내용 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
+	            	<p><img src="${root}/resources/images/image_7.jpg" alt="" class="img-fluid"></p>
+	           		<p> 내용 이어서 내용내용 Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
+	            </div>
+            <div class="sl-loc"><h5><i class="flaticon-shopping-bag"></i> 쇼핑최고</h5></div>
+            	<div class="sl-loc-cont p-3">
+	            	<p> 내용내용 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
+	            	<p><img src="${root}/resources/images/image_7.jpg" alt="" class="img-fluid"></p>
+	           		<p> 내용 이어서 내용내용 Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
+	            </div>
+            <div class="sl-loc"><h5><i class="flaticon-meeting-point"></i> 장소멋진장소</h5></div>
+	            <div class="sl-loc-cont p-3">
+		            <p> 2번째 내용내용 Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+		            <p><img src="${root}/resources/images/image_8.jpg" alt="" class="img-fluid"></p>
+		            <p> 내용이구영 Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
+	            </div>
+	            
+			<div><h2 class="mb-3">2일차</h2><hr></div>
+			<div><h2 class="mb-3">3일차</h2><hr></div>	       
             
-            <div class="text p-3">
-	            <h2 class="mb-3"><i class="flaticon-hotel"></i> 제목2222222 숙박</h2>
-	            <p> 2번째 내용내용 Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-	            <p><img src="${root}/resources/images/image_8.jpg" alt="" class="img-fluid"></p>
-	            <p> 내용이구영 Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
-            </div>
-            <br>
-            
-            <div class="text p-3">
-            	<h2 class="mb-3"><i class="flaticon-fork"></i> 제목 3. 식당</h2>
-            	<p> 내용내용 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
-            	<p><img src="${root}/resources/images/image_7.jpg" alt="" class="img-fluid"></p>
-           		<p> 내용 이어서 내용내용 Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-            </div>
-            <br>
-            
-            <div class="text p-3">
-	            <h2 class="mb-3"><i class="flaticon-shopping-bag"></i> 제목4. 쇼핑</h2>
-	            <p> 2번째 내용내용 Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-	            <p><img src="${root}/resources/images/image_8.jpg" alt="" class="img-fluid"></p>
-	            <p> 내용이구영 Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
-            </div>
 
 <!-- 댓글 목록 ***li,ul 짝 안맞는거 찾기~ -->
             <div class="pt-5">

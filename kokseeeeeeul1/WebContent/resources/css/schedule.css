@@ -5,6 +5,9 @@
   margin-left: auto !important; 
   color: skyblue;}
   
+  
+  /* border-top: 1px solid transparent; 추가추가추가 */
+  background: #fff; } 
 .destination .text {
   border: 1px solid #e6e6e6;
   /* border-top: 1px solid transparent; 추가추가추가 */
@@ -13,6 +16,16 @@
   .destination .text .days {
   margin: 0px;
 } 
+.destination .sl-loc {
+  background: #fff; 
+  padding: 10px 15px;}
+ .destination .sl-loc-cont {
+  border: 1px solid #e6e6e6; /*#108292*/
+  background: #fff; 
+  margin-left: 25px;
+  margin-bottom: 25px;}
+
+
   
 .destination .text .days span {
   font-size: 13px;
@@ -48,3 +61,18 @@
   color: inherit;
   font-size: 5px;
 }
+
+/*
+ .destination .text .days p{
+ 	display: inline-block;
+ 	line-height: 16px;
+ 	padding: 0 10px;
+ 	margin: 0;
+ 	color: #999;
+	border-left: 1px solid #ccc;
+ 	}
+  .destination .text .days p:first-child{
+  	border-left: none;
+ 	padding: 0 10px 0 0;
+  }
+  */
