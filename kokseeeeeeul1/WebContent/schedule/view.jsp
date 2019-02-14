@@ -28,10 +28,9 @@
 	<div class="container">
 	<div class="row">
 <!-- 왼쪽 -->
-		<div class="col-md-4 sidebar ftco-animate">
+		<div class="col-lg-3 sidebar ftco-animate">
         	<div class="sidebar-box ftco-animate">
 
-            	<!-- <div id="daumMap" style="display:scroll;position:fixed;bottom:20px;left:20px;width:300px;height:400px;"></div> -->
             	<div id="daumMap" style="width:100%;height:400px;"></div>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
 				<script>
@@ -137,7 +136,7 @@
 <!-- 왼쪽 End -->
       
 <!-- 오른쪽 -->    
-		<div class="col-md-8 ftco-animate destination">
+		<div class="col-lg-9 ftco-animate destination">
 			<div class="text p-3">
 				<h3 class="mb-3">소제목 입니다</h3>
 				<p>여행 내용을 간략히 소개하는 부분 입니다.<br>*이 부분을 위로 12로 잡고 배경색 넣어서 올릴까요?<br>지도는 왼쪽에서 스크롤해도 따라다니게 하면 좋을것 같다.<br>n일차 부분을 div, a, span, p 등으로 class 지정해주고 n일차(n) ^ 아이콘<br>밑에 부분 글씨 더 연하게 </p>
