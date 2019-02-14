@@ -30,6 +30,8 @@
 <!-- 왼쪽 -->
 		<div class="col-md-4 sidebar ftco-animate">
         	<div class="sidebar-box ftco-animate">
+
+            	<!-- <div id="daumMap" style="display:scroll;position:fixed;bottom:20px;left:20px;width:300px;height:400px;"></div> -->
             	<div id="daumMap" style="width:100%;height:400px;"></div>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
 				<script>
@@ -120,7 +122,7 @@
             </div>
         
             <div class="sidebar-box ftco-animate">
-              <h3><i class="icon-tag"></i> 태그</h3>
+              <h3><i class="icon-tag"></i> 태그a</h3>
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">전라남도</a>
                 <a href="#" class="tag-cloud-link">여수</a>
