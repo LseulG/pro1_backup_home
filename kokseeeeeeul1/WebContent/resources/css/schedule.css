@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.ml-auto,
+.ml-auto,readystate http status
 .mx-auto {
   margin-left: auto !important; 
   color: skyblue;}
@@ -16,15 +16,33 @@
   .destination .text .days {
   margin: 0px;
 } 
+
+
+
+
 .destination .sl-loc {
+  cursor: pointer;
+  position: relative;
   background: #fff; 
-  padding: 10px 15px;}
+  padding: 10px 15px;
+	}
+
  .destination .sl-loc-cont {
+  display: none;
+  }
+  
+  .destination .sl-loc-cont p{
+  display: block;
   border: 1px solid #e6e6e6; /*#108292*/
   background: #fff; 
   margin-left: 25px;
-  margin-bottom: 25px;}
+  margin-bottom: 25px;
+  }
 
+.clickcss {
+	display: block;
+	text-decoration: underline;
+}
 
   
 .destination .text .days span {

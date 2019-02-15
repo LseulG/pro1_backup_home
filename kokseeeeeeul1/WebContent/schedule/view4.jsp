@@ -6,37 +6,18 @@
 <title>방방콕콕 - 여행 일정 상세</title>
 <%@ include file="/include/link.jsp"%>
 <link rel="stylesheet" href="${root}/resources/css/schedule.css">
-<script>
-$(function(){ var $win = $(window); var top = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다. 
-/*사용자 설정 값 시작*/ 
-var speed = 500; // 따라다닐 속도 : "slow", "normal", or "fast" or numeric(단위:msec) 
-var easing = 'linear'; // 따라다니는 방법 기본 두가지 linear, swing 
-var $layer = $('.float_sidebar'); // 레이어 셀렉팅 
-var layerTopOffset = 0; // 레이어 높이 상한선, 단위:px 
-$layer.css('position', 'relative').css('z-index', '1'); 
-/*사용자 설정 값 끝*/ 
- 
-/// 스크롤 바를 내린 상태에서 리프레시 했을 경우를 위해 
-if (top > 0 ) 
-	$win.scrollTop(layerTopOffset+top); 
-else 
-	$win.scrollTop(0); 
-	
-//스크롤이벤트가 발생하면 
-$(window).scroll(function(){ 
-	yPosition = $win.scrollTop() - 1100; //이부분을 조정해서 화면에 보이도록 맞추세요 
-	if (yPosition < 0) { 
-		yPosition = 0; 
-	} 
-	$layer.animate({"top":yPosition }, {duration:speed, easing:easing, queue:false}); 
-	}); 
-});
-$(document).ready(function() { 
-	$(window).scroll(function() { 
-		$(this).scrollTop() > 1000 ? $(".float_sidebar").fadeIn() : $(".float_sidebar").fadeOut() 
-	}) 
-});
+<style type="text/css">
+.clickcss {
+	text-decoration: underline;
+}
 
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".sl-day div.sl-loc").click(function(){
+		$(this).next("div.sl-loc-cont").addClass("clickcss").slideDown(500).siblings("div.sl-loc-cont").slideUp("slow");
+	});
+});
 </script>
 </head>
 <body>
@@ -65,96 +46,11 @@ $(document).ready(function() {
 				<div class="float_sidebar">
             	<div id="daumMap" style="width:300px;height:500px;"></div>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
-				<script>
-					//http://apis.map.daum.net/web/sample/basicMarkerImage/
-					//참고사이트
-							var mapContainer = document.getElementById('daumMap'), // 지도를 표시할 div 
-						    mapOption = { 
-						        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						        level: 3 // 지도의 확대 레벨
-						    };  
-						
-							var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-							
-					// 스크롤 생성		
-							// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-							var mapTypeControl = new daum.maps.MapTypeControl();
-							
-							// 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-							// daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-							map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
-					
-							// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-							var zoomControl = new daum.maps.ZoomControl();
-							map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-							
-					// 핀 여러개 찍기
-							// 마커를 표시할 위치와 title 객체 배열입니다 
-							var positions = [
-							    {
-							        title: '카카오', 
-							        latlng: new daum.maps.LatLng(33.450705, 126.570677)
-							    },
-							    {
-							        title: '생태연못', 
-							        latlng: new daum.maps.LatLng(33.450936, 126.569477)
-							    },
-							    {
-							        title: '텃밭', 
-							        latlng: new daum.maps.LatLng(33.450879, 126.569940)
-							    },
-							    {
-							        title: '근린공원',
-							        latlng: new daum.maps.LatLng(33.451393, 126.570738)
-							    }
-							];
-							
-							// 마커 이미지의 이미지 주소입니다. 이미지 링크만 바꾸면 변경 가능.
-							var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-							    
-							for (var i = 0; i < positions.length; i ++) {
-							    
-							    // 마커 이미지의 이미지 크기 입니다
-							    var imageSize = new daum.maps.Size(24, 35); 
-							    
-							    // 마커 이미지를 생성합니다    
-							    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-							    
-							    // 마커를 생성합니다
-							    var marker = new daum.maps.Marker({
-							        map: map, // 마커를 표시할 지도
-							        position: positions[i].latlng, // 마커를 표시할 위치
-							        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-							        image : markerImage // 마커 이미지 
-							    });
-							}
-							
-					// 지도에 선 잇기
-							// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-							var linePath = [
-							    new daum.maps.LatLng(33.450705, 126.570677),
-							    new daum.maps.LatLng(33.450879, 126.569940),
-							    new daum.maps.LatLng(33.450936, 126.569477),
-							    new daum.maps.LatLng(33.451393, 126.570738)
-							];
-							
-							// 지도에 표시할 선을 생성합니다
-							var polyline = new daum.maps.Polyline({
-							    path: linePath, // 선을 구성하는 좌표배열 입니다
-							    strokeWeight: 5, // 선의 두께 입니다
-							    strokeColor: '#FFAE00', // 선의 색깔입니다
-							    strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-							    strokeStyle: 'solid' // 선의 스타일입니다
-							});
-							
-							// 지도에 선을 표시합니다 
-							polyline.setMap(map); 
-				</script>
 				</div>
             </div>
         
             <div class="sidebar-box ftco-animate">
-              <h3><i class="icon-tag"></i> 태그aa</h3>
+              <h3><i class="icon-tag"></i> 태그bb</h3>
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">전라남도</a>
                 <a href="#" class="tag-cloud-link">여수</a>
@@ -185,8 +81,8 @@ $(document).ready(function() {
 			</div>		
 			<br>
 			
-			<div><h2 class="mb-3">1일차</h2><hr></div>
-			<div class="sl-loc"><h5><i class="flaticon-meeting-point"></i> 장소장소장소</h5></div>
+			<div class="sl-day"><h2 class="mb-3">1일차</h2><hr></div>
+			<div class="sl-loc"><p class="sl-loc-title"><i class="flaticon-meeting-point"></i> 장소장소장소ppp</p></div>
 			<div class="sl-loc"><h5><i class="flaticon-hotel"></i> 숙박숙박</h5></div>
 				<div class="sl-loc-cont p-3">
 		            <p> 2번째 내용내용 Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
@@ -318,7 +214,7 @@ $(document).ready(function() {
 <!-- 내용끝 -->
 
 
-
+<script src="${root}/resources/js/sl-map-view.js"></script>
 <%@ include file="/include/footer.jsp"%>
 <%@ include file="/include/loader.jsp"%>    
 <%@ include file="/include/arrowup.jsp"%>
