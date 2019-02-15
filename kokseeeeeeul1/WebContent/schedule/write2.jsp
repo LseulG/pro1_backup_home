@@ -30,6 +30,16 @@
 	<div class="row">
 <!-- 왼쪽 검색창 -->	
 		<div class="col-lg-3 sidebar">
+		<div class="sidebar-wrap bg-light ftco-animate">
+			<h3 class="heading mb-4">대표 사진</h3>
+			<div class="ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('${root}/resources/images/destination-1.jpg');">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-search2"></span>
+	    				</div>
+		    		</a>
+			</div>
+		</div>
         <div class="sidebar-wrap bg-light ftco-animate">
 			<h3 class="heading mb-4">일정 정보</h3>
         	<form action="#">
@@ -166,7 +176,7 @@
 	              </div>
 	              <br>
 				
-				<!-- 지도 -->			
+				<!-- 지도 -->	<!-- 지도에서 선택하고 n일차, n번째 선택, 등록버튼? -->		
 				<div class="">
 					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
 					<div class="map_wrap">
@@ -190,8 +200,8 @@
 				</div>		
 				<br>
 			
-			<div><h2 class="mb-3">1일차</h2><hr></div>
-			<div class="sl-loc"><h5><i class="flaticon-meeting-point"></i> 장소장소장소</h5></div>
+			<div><h2 class="mb-3"><i class="icon-map-marker"></i>1일차    (위아래 버튼)</h2><hr></div>
+			<div class="sl-loc"><h5><i class="flaticon-meeting-point"></i> 장소장소장소 (연필-쓰기/수정- 장소 옆) (위아래버튼 - 등록한것만, 오른쪽에)</h5></div>
 			<div class="sl-loc"><h5><i class="flaticon-hotel"></i> 숙박숙박.</h5></div>
 			<div class="sl-loc"><h5><i class="flaticon-fork"></i> 식당맛집식도락</h5></div>
             <div class="sl-loc"><h5><i class="flaticon-shopping-bag"></i> 쇼핑최고</h5></div>
