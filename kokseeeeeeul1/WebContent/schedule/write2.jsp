@@ -35,7 +35,7 @@
 			<div class="ftco-animate destination">
 		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('${root}/resources/images/destination-1.jpg');">
 			    		<div class="icon d-flex justify-content-center align-items-center">
-	    					<span class="icon-search2"></span>
+	    					<span class="icon-plus"></span>
 	    				</div>
 		    		</a>
 			</div>
