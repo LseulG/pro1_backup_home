@@ -5,6 +5,8 @@
 <head>
 <title>Insert title here</title>
 <%@ include file="/include/link.jsp"%>
+<link rel="stylesheet" href="${root}/resources/css/login.css">
+<link rel="stylesheet" href="${root}/resources/fonts/iconic/css/material-design-iconic-font.min.css">
 </head>
 <body>
 <%@ include file="/include/nav.jsp"%>
@@ -52,15 +54,15 @@
 						    	</div>			    
 							</div>				
 								
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
           </div>
         </div>
       </div>
-    </div>
+
     <section class="ftco-section bg-light">
     
 
