@@ -78,6 +78,7 @@
       border: 2px solid #fdd3d3; }
       
 .sl-loc {
+	height:40px;
 	margin-bottom: 0.5rem;
 	margin-top: 0;
 	line-height: 1.5;
@@ -109,3 +110,18 @@
       line-height: 15px;
       border-radius: 50%;
       border: 1px solid #6c757d; }
+     
+  /*드래그드롭 연습*/    
+/*
+.itemBoxHighlight {
+	height:40px;
+	margin-bottom: 0.5rem;
+	margin-top: 0;
+	background-color:lightgray;
+}
+.deleteBox {
+	float:right;
+	display:none;
+	cursor:pointer;
+	color: red;
+}*/
