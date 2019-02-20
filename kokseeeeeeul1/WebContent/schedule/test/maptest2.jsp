@@ -194,7 +194,9 @@ function createBox() {
     	위도 : <input type="text" id="locLat" value="test" readonly="readonly"><br>
     	경도 : <input type="text" id="locLng" value="test" readonly="readonly"><br>
     	장소명 : <input type="text" id="locTitle" value="test" readonly="readonly"><br>
-    	주소 : <input type="text" id="locAdress" value="test" readonly="readonly"><br>
+    	일반 주소 : <input type="text" id="locAdress" value="test" readonly="readonly" style="width: 250px"><br>
+    	도로명 주소 : <input type="text" id="locRoadAdress" value="test" readonly="readonly" style="width: 250px"><br>
+    	test 주소 : <input type="text" id="testAdress" value="test" readonly="readonly" style="width: 250px"><br>
     </div>
     
 	<div>
@@ -317,17 +319,28 @@ function displayPlaces(places) {
                 infowindow.close();
             };
             
+            // ok : 1 6 7 2 aa 3 5
+            // no : 1 6 7 2 aa
             daum.maps.event.addListener(marker, 'click', function() {
+            	//alert('111');
             	 searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
+            		// alert('222');
             	        if (status === daum.maps.services.Status.OK) {
-							document.getElementById("locAdress").value = result[0].address.address_name;
-            	        }   
+            	        	//alert('aa'); 
+            	        	document.getElementById("locAdress").value = result[0].address.address_name;
+            	        	document.getElementById("locRoadAdress").value = result[0].road_address.address_name;
+							//alert('333');
+            	        } else {
+            	        	//alert('444');
+            	        }
+            	        //alert('555');
             	    });
+            	 //alert('666');
             	 document.getElementById("locPosition").value = marker.getPosition();
             	 document.getElementById("locLat").value = marker.getPosition().getLat();
             	 document.getElementById("locLng").value = marker.getPosition().getLng();
             	 document.getElementById("locTitle").value = title;
-            	 
+            	 //alert('777');
             });
         })(marker, places[i].place_name);
 

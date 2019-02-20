@@ -8,66 +8,22 @@
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
   	<link rel="stylesheet" href="${root}/resources/css/sl-map.css"> 
   	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
-body.dragging, body.dragging * {
-  cursor: move !important;
-}
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script type="text/javascript">
 
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
-}
-
-ol.example li.placeholder {
-  position: relative;
-  /** More li styles **/
-}
-ol.example li.placeholder:before {
-  position: absolute;
-  /** Define arrowhead **/
-}
-  </style>
-  <script type="text/javascript" src="${root}/resources/js/jquery-sortable.js" ></script>
-<script type="text/javascript">
-var adjustment;
-
-$("ol.simple_with_animation").sortable({
-  group: 'simple_with_animation',
-  pullPlaceholder: false,
-  // animation on drop
-  onDrop: function  ($item, container, _super) {
-    var $clonedItem = $('<li/>').css({height: 0});
-    $item.before($clonedItem);
-    $clonedItem.animate({'height': $item.height()});
-
-    $item.animate($clonedItem.position(), function  () {
-      $clonedItem.detach();
-      _super($item, container);
+function() {
+    $( "#sortable" ).sortable({
+      placeholder: "ui-state-highlight"
     });
-  },
-
-  // set $item relative to cursor position
-  onDragStart: function ($item, container, _super) {
-    var offset = $item.offset(),
-        pointer = container.rootGroup.pointer;
-
-    adjustment = {
-      left: pointer.left - offset.left,
-      top: pointer.top - offset.top
-    };
-
-    _super($item, container);
-  },
-  onDrag: function ($item, position) {
-    $item.css({
-      left: position.left - adjustment.left,
-      top: position.top - adjustment.top
-    });
-  }
-});
+    $( "#sortable" ).disableSelection();
+  } 
 </script>
+<style type="text/css">
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+</style>
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
@@ -268,16 +224,16 @@ $("ol.simple_with_animation").sortable({
             <div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-shopping-bag"></i> 쇼핑최고</label></div>
             <div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-meeting-point"></i> 장소멋진장소</label></div>
 
-	        <div class='span4'>
-              <ol class='simple_with_animation vertical'>
-                <li>Item 1</li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-                <li>Item 5</li>
-                <li>Item 6</li>
-              </ol>
-            </div>
+	       <!-- 여기에 테스트..  -->
+	       <ul id="sortable">
+			  <li class="ui-state-default">Item 1</li>
+			  <li class="ui-state-default">Item 2</li>
+			  <li class="ui-state-default">Item 3</li>
+			  <li class="ui-state-default">Item 4</li>
+			  <li class="ui-state-default">Item 5</li>
+			  <li class="ui-state-default">Item 6</li>
+			  <li class="ui-state-default">Item 7</li>
+			</ul>
 	        
 	        <br>  
 			<div><h2 class="mb-3">2일차</h2><hr></div>
@@ -291,8 +247,6 @@ $("ol.simple_with_animation").sortable({
 	</section>
 <!-- 내용끝 -->
 <script src="${root}/resources/js/sl-map.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" ></script>
-	<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script>
 <%@ include file="/include/footer.jsp"%>
 <%@ include file="/include/loader.jsp"%>    
 <%@ include file="/include/arrowup.jsp"%>
