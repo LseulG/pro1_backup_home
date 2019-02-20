@@ -190,11 +190,12 @@ function createBox() {
         <div id="pagination"></div>
     </div>
     <div>
-    <input type="text" id="locTitle" value="test" readonly="readonly">
+    	위도경도 : <input type="text" id="locPosition" value="test" readonly="readonly"><br>
+    	위도 : <input type="text" id="locLat" value="test" readonly="readonly"><br>
+    	경도 : <input type="text" id="locLng" value="test" readonly="readonly"><br>
+    	장소명 : <input type="text" id="locTitle" value="test" readonly="readonly"><br>
+    	주소 : <input type="text" id="locAdress" value="test" readonly="readonly"><br>
     </div>
-    <div class="sl-loc"><h5><i class="flaticon-hotel"></i> 숙박숙박1</h5></div>
-    <div class="sl-loc"><h5><i class="flaticon-hotel"></i> 숙박숙박2</h5></div>
-    <div class="sl-loc"><h5><i class="flaticon-hotel"></i> 숙박숙박3</h5></div>
     
 	<div>
 	    <div style="float:left;width:100px;">아이템 추가 : </div>
@@ -317,16 +318,16 @@ function displayPlaces(places) {
             };
             
             daum.maps.event.addListener(marker, 'click', function() {
-            	 alert(marker.getPosition());
-            	 alert(marker.getPosition().getLat()); //위도
-            	 alert(marker.getPosition().getLng()); //경도
-            	 alert(title);
             	 searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
             	        if (status === daum.maps.services.Status.OK) {
-							alert(result[0].address.address_name);
+							document.getElementById("locAdress").value = result[0].address.address_name;
             	        }   
             	    });
+            	 document.getElementById("locPosition").value = marker.getPosition();
+            	 document.getElementById("locLat").value = marker.getPosition().getLat();
+            	 document.getElementById("locLng").value = marker.getPosition().getLng();
             	 document.getElementById("locTitle").value = title;
+            	 
             });
         })(marker, places[i].place_name);
 

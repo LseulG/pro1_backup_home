@@ -6,137 +6,68 @@
     <title>방방콕콕 - 여행 일정 쓰기</title>
   	<%@ include file="/include/link.jsp"%>
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
-  	<link rel="stylesheet" href="${root}/resources/css/sl-map.css">
-  
-  	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-<style>
-/* 리스트 아이템  : .sl-loc*/
-.itemBox {
-    border:solid 1px black;
-    width:400px;
-    height:30px;
-    padding:10px;
-    margin-bottom:10px;
+  	<link rel="stylesheet" href="${root}/resources/css/sl-map.css"> 
+  	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+body.dragging, body.dragging * {
+  cursor: move !important;
 }
-/* 드롭 할 자리*/
-.itemBoxHighlight {
-    border:solid 1px black;
-    width:400px;
-    height:50px;
-    padding:10px;
-    margin-bottom:10px;
-    background-color:lightgray;
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
 }
-/* 마우스오버 시 삭제 스타일*/
-.deleteBox {
-    float:right;
-    display:none;
-    cursor:pointer;
-    color: red;
+
+ol.example li.placeholder {
+  position: relative;
+  /** More li styles **/
 }
-</style>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ol.example li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+  </style>
+  <script type="text/javascript" src="${root}/resources/js/jquery-sortable.js" ></script>
 <script type="text/javascript">
-/** 아이템을 등록한다. */
-function submitItem() {
-    if(!validateItem()) {
-    	return;
-    }
-    alert("등록");
-}
+var adjustment;
 
-/** 아이템 체크 */
-function validateItem() {
-    var items = $("input[type='text'][name='item']");
-    if(items.length == 0) {
-        alert("작성된 아이템이 없습니다.");
-        return false;
-    }
+$("ol.simple_with_animation").sortable({
+  group: 'simple_with_animation',
+  pullPlaceholder: false,
+  // animation on drop
+  onDrop: function  ($item, container, _super) {
+    var $clonedItem = $('<li/>').css({height: 0});
+    $item.before($clonedItem);
+    $clonedItem.animate({'height': $item.height()});
 
-    var flag = true;
-    for(var i = 0; i < items.length; i++) {
-        if($(items.get(i)).val().trim() == "") {
-            flag = false;
-            alert("내용을 입력하지 않은 항목이 있습니다.");
-            break;
-        }
-    }
-
-    return flag;
-}
-
-/** UI 설정8 */
-$(function() {
-	// id가 itemBoxWrap인 태그를 리스트로 만든다
-    $("#itemBoxWrap").sortable({
-        placeholder:"itemBoxHighlight",		// 드래그 중인 아이템이 놓일 자리를 표시할 스타일 지정
-        start: function(event, ui) {		// 드래그 시작 시 호출되는 이벤트 핸들러
-            ui.item.data('start_pos', ui.item.index());		// 아이템에 키(start_pos), 값(ui.item.index()) 저장
-        },
-        stop: function(event, ui) {		// 드랍하면 호출되는 이벤트 핸들러
-            var spos = ui.item.data('start_pos');
-            var epos = ui.item.index();		// 드래그 하는 아이템의 위치를 가져옴. 0부터 시작
-			      reorder();	// 순서가 변경되면 모든 itemBox 내의 itemNum(입력필드 앞의 숫자)의 번호를 순서대로 다시 붙임
-        }
+    $item.animate($clonedItem.position(), function  () {
+      $clonedItem.detach();
+      _super($item, container);
     });
+  },
+
+  // set $item relative to cursor position
+  onDragStart: function ($item, container, _super) {
+    var offset = $item.offset(),
+        pointer = container.rootGroup.pointer;
+
+    adjustment = {
+      left: pointer.left - offset.left,
+      top: pointer.top - offset.top
+    };
+
+    _super($item, container);
+  },
+  onDrag: function ($item, position) {
+    $item.css({
+      left: position.left - adjustment.left,
+      top: position.top - adjustment.top
+    });
+  }
 });
-
-/** 아이템 순서 조정8 */
-function reorder() {
-    $(".itemBox").each(function(i, box) {
-        $(box).find(".itemNum").html(i + 1);
-    });
-}
-
-/** 아이템 추가8 */
-function createItem() {
-    $(createBox())
-	    .appendTo("#itemBoxWrap") // createBox 함수 호출하여 아이템을 구성할 태그 반환 받아 jQuery 객체로 생성. 만들어진 아이템을 id가 itemBoxWrap인 태그에 추가
-	    .hover( 	// 아이템에 마우스 오버와 아웃시에 동작 지정
-	        function() {	// 오버시 배경색 바꾸고 삭제 버튼 보여줌
-	            $(this).css('backgroundColor', '#f9f9f5');
-	            $(this).find('.deleteBox').show();
-	        },
-	        function() {	// 아웃시 배경 원래대로 돌리고 삭제버튼 숨김
-	            $(this).css('background', 'none');
-	            $(this).find('.deleteBox').hide();
-	        }
-	    )
-		.append("<div class='deleteBox'>삭제</div>")		// 아이템에 삭제 버튼 추가
-		.find(".deleteBox").click(function() {		// 삭제 버튼을 클릭했을 때 동작 지정. 아이템에 포함된 입력 필드에 값이 있으면 정말 삭제할지 물어봄
-        var valueCheck = false;
-        $(this).parent().find('input').each(function() {
-            if($(this).attr("name") != "type" && $(this).val() != '') {
-                valueCheck = true;
-            }
-        });
-
-        if(valueCheck) {
-            var delCheck = confirm('입력하신 내용이 있습니다.\n삭제하시겠습니까?');
-        }
-        if(!valueCheck || delCheck == true) {
-            $(this).parent().remove();
-            reorder();
-        }
-    });
-    // 숫자를 다시 붙인다.
-    reorder();
-}
-
-/** 아이템 박스 작성8 */
-// itemBox 내에 번호를 표시할 itemNum과 입력필드
-function createBox() {
-    var contents = "<div class='itemBox'>"
-                 + "<div style='float:left;'>"
-                 + "<span class='itemNum'></span> "
-                 + "<input type='text' name='item' style='width:300px;'/>"
-                 + "</div>"
-                 + "</div>";
-    return contents;
-}
 </script>
-  
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
@@ -330,17 +261,23 @@ function createBox() {
 				</div>		
 				<br>
 			
-			<div align="right">
-        		<input type="button" id="addItem" value="일정추가" onclick="createItem();" />
-       		 	<input type="button" id="submitItem" value="제출" onclick="submitItem();" />
-  			</div>
 			<div class="sl-day day-updown"><label class="seul1">1일차 <a href="#"><i class="icon-keyboard_arrow_down"></i></a></label><hr></div>
 			
-			<div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-hotel"></i> 숙박숙박 <i class="icon-pencil"></i></label></div>
+			<div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-hotel"></i> 숙박숙박1 <i class="icon-pencil"></i></label></div>
 			<div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-fork"></i> 식당맛집식도락</label></div>
             <div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-shopping-bag"></i> 쇼핑최고</label></div>
             <div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-meeting-point"></i> 장소멋진장소</label></div>
-	        <div class="sl-loc loc-updown" id="itemBoxWrap"></div>
+
+	        <div class='span4'>
+              <ol class='simple_with_animation vertical'>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+                <li>Item 6</li>
+              </ol>
+            </div>
 	        
 	        <br>  
 			<div><h2 class="mb-3">2일차</h2><hr></div>
@@ -354,7 +291,8 @@ function createBox() {
 	</section>
 <!-- 내용끝 -->
 <script src="${root}/resources/js/sl-map.js"></script>
-	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" ></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script>
 <%@ include file="/include/footer.jsp"%>
 <%@ include file="/include/loader.jsp"%>    
 <%@ include file="/include/arrowup.jsp"%>
