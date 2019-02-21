@@ -43,134 +43,6 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
-
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" ></script>
-<script type="text/javascript">
-/** 아이템을 등록한다. */
-function submitItem() {
-    if(!validateItem()) {
-    	return;
-    }
-    alert("등록");
-}
-
-/** 아이템 체크 */
-function validateItem() {
-    var items = $("input[type='text'][name='item']");
-    if(items.length == 0) {
-        alert("작성된 아이템이 없습니다.");
-        return false;
-    }
-
-    var flag = true;
-    for(var i = 0; i < items.length; i++) {
-        if($(items.get(i)).val().trim() == "") {
-            flag = false;
-            alert("내용을 입력하지 않은 항목이 있습니다.");
-            break;
-        }
-    }
-
-    return flag;
-}
-
-/** UI 설정 */
-$(function() {
-    $("#itemBoxWrap").sortable({
-        placeholder:"itemBoxHighlight",
-        start: function(event, ui) {
-            ui.item.data('start_pos', ui.item.index());
-        },
-        stop: function(event, ui) {
-            var spos = ui.item.data('start_pos');
-            var epos = ui.item.index();
-			      reorder();
-        }
-    });
-    //$("#itemBoxWrap").disableSelection();
-    
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
-});
-
-/** 아이템 순서 조정 */
-function reorder() {
-    $(".itemBox").each(function(i, box) {
-        $(box).find(".itemNum").html(i + 1);
-    });
-}
-
-/** 아이템 추가 */
-function createItem() {
-    $(createBox())
-    .appendTo("#itemBoxWrap")
-    .hover(
-        function() {
-            $(this).css('backgroundColor', '#f9f9f5');
-            $(this).find('.deleteBox').show();
-        },
-        function() {
-            $(this).css('background', 'none');
-            $(this).find('.deleteBox').hide();
-        }
-    )
-		.append("<div class='deleteBox'>[삭제]</div>")
-		.find(".deleteBox").click(function() {
-        var valueCheck = false;
-        $(this).parent().find('input').each(function() {
-            if($(this).attr("name") != "type" && $(this).val() != '') {
-                valueCheck = true;
-            }
-        });
-
-        if(valueCheck) {
-            var delCheck = confirm('입력하신 내용이 있습니다.\n삭제하시겠습니까?');
-        }
-        if(!valueCheck || delCheck == true) {
-            $(this).parent().remove();
-            reorder();
-        }
-    });
-    // 숫자를 다시 붙인다.
-    reorder();
-}
-
-/** 아이템 박스 작성 */
-function createBox() {
-    var contents = "<div class='itemBox'>"
-                 + "<div style='float:left;'>"
-                 + "<span class='itemNum'></span> "
-                 + "<input type='text' name='item' style='width:300px;'/>"
-                 + "</div>"
-                 + "</div>";
-    return contents;
-}
-</script>
-<style>
-.itemBox {
-    border:solid 1px black;
-    width:400px;
-    height:50px;
-    padding:10px;
-    margin-bottom:10px;
-}
-.itemBoxHighlight {
-    border:solid 1px black;
-    width:400px;
-    height:50px;
-    padding:10px;
-    margin-bottom:10px;
-    background-color:yellow;
-}
-.deleteBox {
-    float:right;
-    display:none;
-    cursor:pointer;
-}
-</style>
-
 </head>
 <body>
 <div class="map_wrap">
@@ -199,22 +71,21 @@ function createBox() {
     	test 주소 : <input type="text" id="testAdress" value="test" readonly="readonly" style="width: 250px"><br>
     </div>
     
-	<div>
-	    <div style="float:left;width:100px;">아이템 추가 : </div>
-	    <div style="clar:both;">
-	        <input type="button" id="addItem" value="추가" onclick="createItem();" />
-	        <input type="button" id="submitItem" value="제출" onclick="submitItem();" />
-	    </div>
-	</div>
-	<br>
-	<div id="itemBoxWrap"></div>
-
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
 <script>
 // 마커를 담을 배열입니다
 var markers = [];
+
+var selectedMarker = null;
+var clickImage = new daum.maps.MarkerImage(
+	    'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
+	    new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+var normalImage = new daum.maps.MarkerImage(
+		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
+		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+		
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -294,7 +165,7 @@ function displayPlaces(places) {
         var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
+        
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -319,28 +190,23 @@ function displayPlaces(places) {
                 infowindow.close();
             };
             
-            // ok : 1 6 7 2 aa 3 5
-            // no : 1 6 7 2 aa
             daum.maps.event.addListener(marker, 'click', function() {
-            	//alert('111');
-            	 searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
-            		// alert('222');
-            	        if (status === daum.maps.services.Status.OK) {
-            	        	//alert('aa'); 
-            	        	document.getElementById("locAdress").value = result[0].address.address_name;
-            	        	document.getElementById("locRoadAdress").value = result[0].road_address.address_name;
-							//alert('333');
-            	        } else {
-            	        	//alert('444');
-            	        }
-            	        //alert('555');
-            	    });
-            	 //alert('666');
-            	 document.getElementById("locPosition").value = marker.getPosition();
-            	 document.getElementById("locLat").value = marker.getPosition().getLat();
-            	 document.getElementById("locLng").value = marker.getPosition().getLng();
-            	 document.getElementById("locTitle").value = title;
-            	 //alert('777');
+            	alert('ooo'); 
+            	var result = confirm('해당 지점을 선택?');
+            	if (result) {
+            		if(selectedMarker != null){
+            			alert(selectedMarker.getPosition());
+            			selectedMarker.setImage(normalImage);            			
+	            		selectedMarker = marker;
+	            		marker.setImage(clickImage);
+            		} else {
+            			selectedMarker = marker;
+            			marker.setImage(clickImage);
+            		}
+            	} else {
+            		
+            	}            	
+            	
             });
         })(marker, places[i].place_name);
 

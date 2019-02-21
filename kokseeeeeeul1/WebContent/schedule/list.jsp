@@ -5,13 +5,11 @@
   <head>
     <title>방방콕콕 - 여행 일정</title>
   	<%@ include file="/include/link.jsp"%>
+  	<%@ include file="/include/loader.jsp"%> 
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="${root}/resources/js/sl-location.js"></script>
-   
 <!-- 이미지 -->
     <div class="hero-wrap js-fullheight" style="background-image: url('${root}/resources/images/bg_3.jpg');">
       <div class="overlay"></div>
@@ -185,8 +183,8 @@
 	</section>
 <!-- 내용끝 -->
 
-<%@ include file="/include/footer.jsp"%>
-<%@ include file="/include/loader.jsp"%>    
+<script src="${root}/resources/js/sl-location.js"></script>
+<%@ include file="/include/footer.jsp"%>   
 <%@ include file="/include/arrowup.jsp"%>
 </body>
 </html>
