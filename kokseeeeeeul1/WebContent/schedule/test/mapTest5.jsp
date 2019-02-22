@@ -82,9 +82,7 @@ var selectedMarker = null;
 var clickImage = new daum.maps.MarkerImage(
 	    'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
 	    new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
-var normalImage = new daum.maps.MarkerImage(
-		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
-		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+var originIamge = null;
 		
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -191,16 +189,17 @@ function displayPlaces(places) {
             };
             
             daum.maps.event.addListener(marker, 'click', function() {
-            	alert('ooo'); 
+            	alert('aa'); 
             	var result = confirm('해당 지점을 선택?');
             	if (result) {
             		if(selectedMarker != null){
-            			alert(selectedMarker.getPosition());
-            			selectedMarker.setImage(normalImage);            			
+            			selectedMarker.setImage(originIamge);            			
 	            		selectedMarker = marker;
+	            		originIamge = marker.getImage();
 	            		marker.setImage(clickImage);
             		} else {
             			selectedMarker = marker;
+            			originIamge = marker.getImage();
             			marker.setImage(clickImage);
             		}
             	} else {

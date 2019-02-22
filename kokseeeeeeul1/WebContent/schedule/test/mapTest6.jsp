@@ -62,14 +62,31 @@
         <div id="pagination"></div>
     </div>
     <div>
-    <input type="text" id="locTitle" value="test" readonly="readonly">
+    	위도경도 : <input type="text" id="locPosition" value="test" readonly="readonly"><br>
+    	위도 : <input type="text" id="locLat" value="test" readonly="readonly"><br>
+    	경도 : <input type="text" id="locLng" value="test" readonly="readonly"><br>
+    	장소명 : <input type="text" id="locTitle" value="test" readonly="readonly"><br>
+    	일반 주소 : <input type="text" id="locAdress" value="test" readonly="readonly" style="width: 250px"><br>
+    	도로명 주소 : <input type="text" id="locRoadAdress" value="test" readonly="readonly" style="width: 250px"><br>
+    	test 주소 : <input type="text" id="testAdress" value="test" readonly="readonly" style="width: 250px"><br>
     </div>
+    
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
 <script>
 // 마커를 담을 배열입니다
 var markers = [];
+
+var selectedMarker = null;
+var clickImage = new daum.maps.MarkerImage(
+	    'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
+	    new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+var normalImage = new daum.maps.MarkerImage(
+		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
+		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+var originIamge = null;
+		
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
@@ -149,7 +166,7 @@ function displayPlaces(places) {
         var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
+        
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -175,16 +192,23 @@ function displayPlaces(places) {
             };
             
             daum.maps.event.addListener(marker, 'click', function() {
-            	 alert(marker.getPosition());
-            	 alert(marker.getPosition().getLat()); //위도
-            	 alert(marker.getPosition().getLng()); //경도
-            	 alert(title);
-            	 searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
-            	        if (status === daum.maps.services.Status.OK) {
-							alert(result[0].address.address_name);
-            	        }   
-            	    });
-            	 document.getElementById("locTitle").value = title;
+            	alert('tt'); 
+            	var result = confirm('해당 지점을 선택?');
+            	if (result) {
+            		if(selectedMarker != null){
+            			selectedMarker.setImage(originIamge);            			
+	            		selectedMarker = marker;
+	            		originIamge = marker.getImage();
+	            		marker.setImage(clickImage);
+            		} else {
+            			selectedMarker = marker;
+            			originIamge = marker.getImage();
+            			marker.setImage(clickImage);
+            		}
+            	} else {
+            		
+            	}            	
+            	
             });
         })(marker, places[i].place_name);
 
@@ -245,8 +269,14 @@ function addMarker(position, idx, title) {
             image: markerImage 
         });
 
+    if(selectedMarker != null){
+    	selectedMarker.setZIndex(1);
+	    selectedMarker.setMap(map);	
+    }
+    
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+    
 
     return marker;
 }
@@ -307,29 +337,6 @@ function removeAllChildNods(el) {
     }
 }
 
- <%--
- // 마커에 새 markerimgage를 지정
-var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-    imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
-    imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-      
-// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption),
-    markerPosition = new daum.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-
-// 마커를 생성합니다
-var marker = new daum.maps.Marker({
-    position: markerPosition, 
-    image: markerImage // 마커이미지 설정 
-});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
---%>
-<%-- 
-marker.setVisible(false); // 마커를 숨긴다
-
---%>
 </script>
 </body>
 </html>
