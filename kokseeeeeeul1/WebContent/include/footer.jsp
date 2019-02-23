@@ -29,6 +29,6 @@
           </div>
         </div>
       </div>
-    </footer>   
-    <script src="${root}/resources/js/main.js"></script>
+    </footer>
     
+    <script src="${root}/resources/js/main.js"></script>   
