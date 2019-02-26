@@ -6,127 +6,11 @@
     <title>방방콕콕 - 여행 일정 쓰기</title>
   	<%@ include file="/include/link.jsp"%>
   	<%@ include file="/include/loader.jsp"%> 
+
   	<link rel="stylesheet" href="${root}/resources/css/community.css">
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
-  	<link rel="stylesheet" href="${root}/resources/css/sl-map.css">
-  
+  	<link rel="stylesheet" href="${root}/resources/css/sl-map.css">  
   	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-	<style>
-	.itemBoxHighlight {
-	height:40px;
-	margin-bottom: 0.5rem;
-	margin-top: 0;
-	background-color:lightgray;
-	}
-	.deleteBox {
-		float:right;
-		display:none;
-		cursor:pointer;
-		color: red;
-	}
-	</style>
-	<script type="text/javascript">
-	/** 아이템을 등록한다. */
-	function submitItem() {
-	    if(!validateItem()) {
-	    	return;
-	    }
-	    alert("등록");
-	}
-
-	/** 아이템 체크 */
-	function validateItem() {
-	    var items = $("input[type='text'][name='item']");
-	    if(items.length == 0) {
-	        alert("작성된 아이템이 없습니다.");
-	        return false;
-	    }
-
-	    var flag = true;
-	    for(var i = 0; i < items.length; i++) {
-	        if($(items.get(i)).val().trim() == "") {
-	            flag = false;
-	            alert("내용을 입력하지 않은 항목이 있습니다.");
-	            break;
-	        }
-	    }
-	    return flag;
-	}
-	
-	/** UI 설정 */
-	$(function() {
-		// id가 itemBoxWrap인 태그를 리스트로 만든다
-	    $("#itemBoxWrap").sortable({
-	        placeholder:"itemBoxHighlight",		// 드래그 중인 아이템이 놓일 자리를 표시할 스타일 지정
-	        start: function(event, ui) {		// 드래그 시작 시 호출되는 이벤트 핸들러
-	            ui.item.data('start_pos', ui.item.index());		// 아이템에 키(start_pos), 값(ui.item.index()) 저장
-	        },
-	        stop: function(event, ui) {		// 드랍하면 호출되는 이벤트 핸들러
-	            var spos = ui.item.data('start_pos');
-	            var epos = ui.item.index();		// 드래그 하는 아이템의 위치를 가져옴. 0부터 시작
-				      reorder();	// 순서가 변경되면 모든 itemBox 내의 itemNum(입력필드 앞의 숫자)의 번호를 순서대로 다시 붙임
-	        }
-	    });
-	});
-
-	/** 아이템 순서 조정 */
-	function reorder() {
-	    $(".itemBox").each(function(i, box) {
-	        $(box).find(".itemNum").html(i + 1);
-	    });
-	}
-
-	/** 아이템 추가 */
-	function createItem() {
-	    $(createBox())
-		    .appendTo("#itemBoxWrap") // createBox 함수 호출하여 아이템을 구성할 태그 반환 받아 jQuery 객체로 생성. 만들어진 아이템을 id가 itemBoxWrap인 태그에 추가
-		    .hover( 	// 아이템에 마우스 오버와 아웃시에 동작 지정
-		        function() {	// 오버시 배경색 바꾸고 삭제 버튼 보여줌
-		            $(this).css('backgroundColor', '#dedede');
-		            $(this).find('.deleteBox').show();
-		        },
-		        function() {	// 아웃시 배경 원래대로 돌리고 삭제버튼 숨김
-		            $(this).css('background', 'none');
-		            $(this).find('.deleteBox').hide();
-		        }
-		    )
-			.append("<label class='deleteBox'>수정|삭제</label>")		// 아이템에 삭제 버튼 추가
-			.find(".deleteBox").click(function() {		// 삭제 버튼을 클릭했을 때 동작 지정. 아이템에 포함된 입력 필드에 값이 있으면 정말 삭제할지 물어봄
-<%--	        var valueCheck = false;
-	        $(this).parent().find('input').each(function() {
-	            if($(this).attr("name") != "type" && $(this).val() != '') {
-	                valueCheck = true;
-	            }
-	        });
-
-	        if(valueCheck) {
-	            var delCheck = confirm('입력하신 내용이 있습니다.\n삭제하시겠습니까?');
-	        }
-	        if(!valueCheck || delCheck == true) {
-	            $(this).parent().remove();
-	            reorder();
-	        }
---%>		var delCheck = confirm('삭제하시겠습니까?');
-			if (delCheck == true){
-				$(this).parent().remove();
-	            reorder();
-			}
-	    });
-	    // 숫자를 다시 붙인다.
-	    reorder();
-	}
-
-	/** 아이템 박스 작성8 */
-	// itemBox 내에 번호를 표시할 itemNum과 입력필드
-	function createBox() {
-	    var contents = "<div class='itemBox sl-loc loc-updown'>"
-	                 + "<span class='itemNum'></span> "
-	                 + "<label class='seul2' name='item'><i class='flaticon-fork'></i> 식당맛집식도락</label>"
-	                 + "</div>";
-	    return contents;
-	}
-	</script>
-  
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
@@ -167,69 +51,70 @@
         	<form action="#">
         	<div class="fields">
         	
-		         <div class="row">
-		         	<div class="col-md-6">
-						<!-- 달력 -->
-	        			<div class="form-group">
-		                	<input type="text" id="checkin_date" class="form-control" placeholder="출발일">
-		              	</div>
-		             </div>
-		             <div class="col-md-6">
-		             	 <div class="form-group">
-		                	<input type="text" id="checkin_date" class="form-control" placeholder="도착일">
-		             	 </div>
+	         	<div class="col-md-12">
+					<!-- 달력1 -->
+        			<div class="form-group">
+	                	<input type="text" id="checkin_date" class="form-control" placeholder="출발일" readonly="readonly">
+	              	</div>
+	         	</div>
+	         	<div class="col-md-12">
+	             	 <div class="form-group">
+	                	<input type="text" id="checkout_date" class="form-control" placeholder="도착일" readonly="readonly">
+	             	 </div>
+       			</div>
+       			
+       			<div class="col-md-12">
+					<!-- 일정(계획/후기) -->
+        			<div class="form-group">
+		            	<div class="select-wrap one-third">
+		                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control">
+		                    	<option value="">여행 계획</option>
+		                    	<option value="">여행 후기</option>
+		                    </select>
+	                  	</div>
         			</div>
-		         </div> 
-        	
-        		<div class="row">
-		         	<div class="col-md-6">
-        			<!-- 여행 기간 -->
-			        	<div class="form-group">
-			                <div class="select-wrap one-third">
-			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                      	<option value="">여행기간</option>
-			                      	<option value="">1</option>
-			                      	<option value="">2</option>
-			                    </select>
-		                  	</div>
-			            </div>
-					</div>
-					<div class="col-md-6">
-        			<!-- 인원 -->
-			        	<div class="form-group">
-			                <div class="select-wrap one-third">
-			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                      	<option value="">인원</option>
-			                      	<option value="">1</option>
-			                      	<option value="">2</option>
-			                    </select>
-		                  	</div>
-			            </div>
-					</div>
-				</div>  
-        	
- 		         <div class="row">
-		         	<div class="col-md-12">
-						<!-- 일정(계획/후기) -->
-	        			<div class="form-group">
-			            	<div class="select-wrap one-third">
-			                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                    	<option value="">여행 계획</option>
-			                    	<option value="">여행 후기</option>
-			                    </select>
-		                  	</div>
-	        			</div>
-        			</div>
-		         </div>       	
-		        	
-		        	<!-- 검색 버튼 -->
+       			</div>
+       	
+				<div class="col-md-12">
+       			<!-- 인원 -->
 		        	<div class="form-group">
-		            	<input type="submit" value="검색" class="btn btn-primary py-3 px-5">
-		        	</div>
-
+		                <div class="select-wrap one-third">
+		                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control">
+		                      	<option value="">여행 인원</option>
+		                      	<option value="">1명</option>
+		                      	<option value="">2명</option>
+		                      	<option value="">3~5명</option>
+		                      	<option value="">6~10명</option>
+		                      	<option value="">단체</option>
+		                    </select>
+	                  	</div>
+		            </div>
+				</div>
+       	
+	         	<div class="col-md-12">
+					<!-- 일정(계획/후기) -->
+        			<div class="form-group">
+		            	<div class="select-wrap one-third">
+		                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+		                    <select name="" id="" class="form-control">
+		                    	<option value="">여행 테마</option>
+		                    	<option value="">친구랑 여행</option>
+		                    	<option value="">나홀로 여행</option>
+		                    	<option value="">커플 여행</option>
+		                    	<option value="">가족 여행</option>
+		                    	<option value="">단체 여행</option>
+		                    	<option value="">패키지 여행</option>
+		                    </select>
+	                  	</div>
+        			</div>
+       			</div>
+       			
+       			<!-- 검색 버튼 -->
+	        	<div class="form-group">
+	            	<input type="button" value="일정 만들기" class="btn btn-primary py-3 px-5">
+	        	</div>
 		    </div>
 			</form>
         </div>
@@ -240,7 +125,7 @@
 		<div class="col-md-8 ftco-animate destination">
 			<div class="text p-3">
 				
-				<div class="comment-form-wrap pt-5">
+				<div class="comment-form-wrap">
 	                <form action="#" class="p-4 bg-light">
 	                	<div class="form-group">
 	                    	<input type="text" class="form-control" placeholder="여행 제목을 입력하세요"><br>
@@ -266,24 +151,33 @@
 				</div>		
 				<br>
 			
-			<div align="right">
-				<a href="#writeModal" style="text-decoration : none">
-					<input type="button" value="등록하기" class="btn btn-primary py-3 px-5">
-				</a>
-        		<input type="button" id="addItem" value="일정추가" onclick="createItem();" />
-       		 	<input type="button" id="submitItem" value="제출" onclick="submitItem();" />
-  			</div>
-			<div class="sl-day day-updown"><label class="seul1">1일차 <a href="#"><i class="icon-keyboard_arrow_down"></i></a></label><hr></div>
-			
-			<div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-hotel"></i> 숙박숙박3 <i class="icon-pencil"></i></label></div>
-			<div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-fork"></i> 식당맛집식도락</label></div>
-            <div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-shopping-bag"></i> 쇼핑최고</label></div>
-            <div class="sl-loc loc-updown"><label class="seul2"><i class="flaticon-meeting-point"></i> 장소멋진장소</label></div>
-	        <div class="" id="itemBoxWrap"></div>
-	        
-	        <br>  
-			<div><h2 class="mb-3">2일차</h2><hr></div>
-			<div><h2 class="mb-3">55일차</h2><hr></div>	       
+				<div align="right">
+					<a href="#writeModal" style="text-decoration : none">
+						<input type="button" value="등록하기" class="btn btn-primary py-3 px-5">
+					</a>
+	        		<input type="button" id="addItem" value="일정추가" onclick="createItem();" />
+	       		 	<input type="button" id="submitItem" value="제출" onclick="submitItem();" />
+	  			</div>
+	  			
+	  			<div class="sl-oneDay">
+					<div class="sl-day">
+						<label class="seul1">1일차 </label><span>2018.08.01</span>
+						<input type="button" id="" value="+일정 추가" class="btn btn-primary" onclick="createItem();"/>
+						<hr>
+					</div>
+		        		<div class="" id="itemBoxWrap"></div>
+	  			</div>
+		        
+				<c:forEach var="i" begin="2" end="6">
+					<div class="sl-oneDay">
+				        <div class="sl-day">
+				        	<label class="seul1">${i}일차 </label><span>2018.08.0${i}</span>
+				        	<input type="button" id="" value="+일정 추가" class="btn btn-primary" onclick="createItemm(${i});"/>
+				        	<hr>
+				        </div>
+				        <div class="" id="itemBoxWrap_${i}"></div>
+					</div>
+				</c:forEach>
             
 			</div>
 		</div>
@@ -295,6 +189,7 @@
 
 <%@ include file="/include/footer.jsp"%> 
 <%@ include file="/include/arrowup.jsp"%>
+<script src="${root}/resources/js/schedule-write.js"></script>
 <script src="${root}/resources/js/sl-map-view.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" ></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script> 

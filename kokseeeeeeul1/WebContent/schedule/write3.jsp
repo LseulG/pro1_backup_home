@@ -149,163 +149,65 @@
 	<section class="ftco-section ftco-degree-bg">
 	<div class="container">
 	<div class="row">
-	
-<!-- 헤드 -->	
-		<div class="col-md-12 ftco-animate destination">
-			<div class="text p-3 row">			
-				<div class="col-md-4 ftco-animate destination bg-light">
-					<h3 class="heading mb-4">대표 사진a</h3>
-		    		<div class="ftco-animate destination">
-				    	<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('${root}/resources/images/destination-1.jpg');">
-					    	<div class="icon d-flex justify-content-center align-items-center">
-			    				<span class="icon-plus"></span>
-			    			</div>
-				    	</a>
-					</div>
-				</div>
-				
-				<div class="col-md-8">
-					<div class="row">
-						<!-- 달력 -->
-	        			<div class="form-group">
-		                	<input type="text" id="checkin_date" class="form-control" placeholder="출발일">
-		              	</div>
-	        			<div class="form-group">
-		                	<input type="text" id="checkin_date" class="form-control" placeholder="도착일">
-		              	</div>
-		              	
-		              	<!-- 인원 -->
-			        	<div class="form-group">
-			                <div class="select-wrap one-third">
-			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                      	<option value="">인원</option>
-			                      	<option value="">1명</option>
-			                      	<option value="">2명</option>
-			                      	<option value="">3명</option>
-			                      	<option value="">4명</option>
-			                      	<option value="">5명</option>
-			                      	<option value="">6~10명</option>
-			                      	<option value="">10명이상</option>
-			                    </select>
-		                  	</div>
-			            </div>
-			            
-			           <!-- 인원 -->
-			        	<div class="form-group">
-			                <input type="number" placeholder="인원" min="1" max="10" step="1"/>
-			            </div>
-			            
-			            <!-- 일정(계획/후기) -->
-	        			<div class="form-group">
-			            	<div class="select-wrap one-third">
-			                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                    	<option value="">여행 계획</option>
-			                    	<option value="">여행 후기</option>
-			                    </select>
-		                  	</div>
-	        			</div>
-					</div>
-					<hr>
-                	<div class="form-group">
-                    	<input type="text" class="form-control" placeholder="여행 제목을 입력하세요"><br>
-                    	<textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="간단히 여행을 소개해주세요 =)"></textarea>
-                 	 </div>
-				</div>
-			</div>	
-		</div>
-<!-- 헤드 -->		
-	
-	
 <!-- 왼쪽 검색창 -->	
 		<div class="col-lg-3 sidebar">
+		<div class="sidebar-wrap bg-light ftco-animate">
+			<h3 class="heading mb-4">대표 사진</h3>
+			<div class="ftco-animate destination">
+		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('${root}/resources/images/destination-1.jpg');">
+			    		<div class="icon d-flex justify-content-center align-items-center">
+	    					<span class="icon-plus"></span>
+	    				</div>
+		    		</a>
+			</div>
+		</div>
 		
         <div class="sidebar-wrap bg-light ftco-animate">
 			<h3 class="heading mb-4">일정 정보</h3>
         	<form action="#">
         	<div class="fields">
         	
-		         <div class="row">
-		         	<div class="col-md-6">
-						<!-- 달력 -->
+		         	<div class="col-md-12">
+						<!-- 달력1 -->
 	        			<div class="form-group">
-		                	<input type="text" id="checkin_date" class="form-control" placeholder="출발일">
+		                	<input type="text" id="checkin_date" class="form-control" placeholder="출발일자">
 		              	</div>
-		             </div>
-		             <div class="col-md-6">
+		         	</div>
+		         	<div class="col-md-12">
 		             	 <div class="form-group">
-		                	<input type="text" id="checkin_date" class="form-control" placeholder="도착일">
+		                	<input type="text" id="checkout_date" class="form-control" placeholder="도착일">
 		             	 </div>
-		             	 
-		             	 <!-- 인원 -->
-			        	<div class="form-group">
-			                <div class="select-wrap one-third">
-			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                      	<option value="">인원</option>
-			                      	<option value="">1</option>
-			                      	<option value="">2</option>
-			                    </select>
-		                  	</div>
-			            </div>
-			            
-			            <!-- 일정(계획/후기) -->
-	        			<div class="form-group">
-			            	<div class="select-wrap one-third">
-			                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                    	<option value="">여행 계획</option>
-			                    	<option value="">여행 후기</option>
-			                    </select>
-		                  	</div>
-	        			</div>
         			</div>
-		         </div> 
         	
-        		<div class="row">
-		         	<div class="col-md-6">
-        			<!-- 여행 기간 -->
-			        	<div class="form-group">
-			                <div class="select-wrap one-third">
-			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                      	<option value="">여행기간</option>
-			                      	<option value="">1</option>
-			                      	<option value="">2</option>
-			                    </select>
-		                  	</div>
-			            </div>
-					</div>
-					<div class="col-md-6">
+					<div class="col-md-12">
         			<!-- 인원 -->
 			        	<div class="form-group">
 			                <div class="select-wrap one-third">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
-			                      	<option value="">인원</option>
-			                      	<option value="">1</option>
-			                      	<option value="">2</option>
+			                    <select name="" id="" class="form-control">
+			                      	<option value="">여행 인원</option>
+			                      	<option value="">1명</option>
+			                      	<option value="">2명</option>
+			                      	<option value="">3~5명</option>
+			                      	<option value="">6~10명</option>
+			                      	<option value="">단체</option>
 			                    </select>
 		                  	</div>
 			            </div>
 					</div>
-				</div>  
         	
- 		         <div class="row">
 		         	<div class="col-md-12">
 						<!-- 일정(계획/후기) -->
 	        			<div class="form-group">
 			            	<div class="select-wrap one-third">
 			                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control" placeholder="Keyword search">
+			                    <select name="" id="" class="form-control">
 			                    	<option value="">여행 계획</option>
 			                    	<option value="">여행 후기</option>
 			                    </select>
 		                  	</div>
 	        			</div>
         			</div>
-		         </div>       	
 		        	
 		        	<!-- 검색 버튼 -->
 		        	<div class="form-group">
@@ -322,7 +224,7 @@
 		<div class="col-md-8 ftco-animate destination">
 			<div class="text p-3">
 				
-				<div class="comment-form-wrap pt-5">
+				<div class="comment-form-wrap">
 	                <form action="#" class="p-4 bg-light">
 	                	<div class="form-group">
 	                    	<input type="text" class="form-control" placeholder="여행 제목을 입력하세요"><br>
