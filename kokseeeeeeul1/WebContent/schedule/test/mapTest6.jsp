@@ -80,12 +80,15 @@ var markers = [];
 
 var selectedMarker = null;
 var clickImage = new daum.maps.MarkerImage(
-	    'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
-	    new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+	    //'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
+	    //'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
+	    'https://phinf.pstatic.net/memo/20190225_65/sseul878_1551068626698VMnPU_PNG/marker_red2.png?type=w740',
+	    //new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+	    new daum.maps.Size(40, 42), new daum.maps.Point(13, 37));
 var normalImage = new daum.maps.MarkerImage(
 		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
 		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
-var originIamge = null;
+var originImage = null;
 		
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -196,19 +199,28 @@ function displayPlaces(places) {
             	var result = confirm('해당 지점을 선택?');
             	if (result) {
             		if(selectedMarker != null){
-            			selectedMarker.setImage(originIamge);            			
+            			selectedMarker.setImage(originImage);            			
 	            		selectedMarker = marker;
-	            		originIamge = marker.getImage();
+	            		originImage = marker.getImage();
 	            		marker.setImage(clickImage);
             		} else {
             			selectedMarker = marker;
-            			originIamge = marker.getImage();
+            			originImage = marker.getImage();
             			marker.setImage(clickImage);
             		}
-            	} else {
             		
-            	}            	
-            	
+            		searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
+                	        if (status === daum.maps.services.Status.OK) {
+                	        	document.getElementById("locAdress").value = result[0].address.address_name;
+                	        	document.getElementById("locRoadAdress").value = result[0].road_address.address_name;
+                	        }
+                	 });
+                	 document.getElementById("locPosition").value = marker.getPosition();
+                	 document.getElementById("locLat").value = marker.getPosition().getLat();
+                	 document.getElementById("locLng").value = marker.getPosition().getLng();
+                	 document.getElementById("locTitle").value = title;
+                	 document.getElementById("testAdress").value = places[i].address_name;
+            	} 
             });
         })(marker, places[i].place_name);
 

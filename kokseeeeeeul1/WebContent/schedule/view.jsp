@@ -6,6 +6,7 @@
 <title>방방콕콕 - 여행 일정 상세</title>
 <%@ include file="/include/link.jsp"%>
 <%@ include file="/include/loader.jsp"%> 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
 <link rel="stylesheet" href="${root}/resources/css/schedule.css">
 <script type="text/javascript">
 $(document).ready(function() {	
@@ -77,31 +78,15 @@ $(document).ready(function() {
         	<div class="sidebar-box ftco-animate">
 				<div class="float_sidebar">
 					<div class="">
-						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
 						<div class="map_wrap">
-	    					<div id="daumMap" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
-	
-						    <div id="menu_wrap" class="bg_white">
-						        <div class="option">
-						            <div>
-						                <form onsubmit="searchPlaces(); return false;">
-						                    키워드y : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
-						                    <button type="submit">검색하기</button> 
-						                </form>
-						            </div>
-						        </div>
-						        <hr>
-						        <ul id="placesList"></ul>
-						        <div id="pagination"></div>
-						    </div>
+	    					 <div id="daumMap" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
 						</div>
-					
 					</div>
 				</div>
             </div>
         
             <div class="sidebar-box ftco-animate">
-              <h3><i class="icon-tag"></i> 태그ddfsf</h3>
+              <h3><i class="icon-tag"></i> 태그cc</h3>
               <div class="tagcloud">
                 <a href="#" class="tag-cloud-link">전라남도</a>
                 <a href="#" class="tag-cloud-link">여수</a>
@@ -226,5 +211,6 @@ $(document).ready(function() {
 <%@ include file="/include/footer.jsp"%>
 <%@ include file="/include/arrowup.jsp"%>
 <script src="${root}/resources/js/sl-map-view.js"></script>
+
 </body>
 </html>

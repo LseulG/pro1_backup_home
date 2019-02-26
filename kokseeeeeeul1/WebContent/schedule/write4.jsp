@@ -241,6 +241,48 @@
 			<div class="text p-3">
 				
 				<div class="comment-form-wrap pt-5">
+					<div class="row col-md-12">
+			         	<div class="col-md-3">
+							<!-- 달력 -->
+		        			<div class="form-group">
+			                	<input type="text" id="checkin_date" class="form-control" placeholder="출발일">
+			              	</div>
+			             </div>
+			             <div class="col-md-3">
+			             	 <div class="form-group">
+			                	<input type="text" id="checkin_date" class="form-control" placeholder="도착일">
+			             	 </div>
+			             </div>
+			             	 
+			             	 <!-- 인원 -->
+			             	 <div class="col-md-3">
+				        	<div class="form-group">
+				                <div class="select-wrap one-third">
+				                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+				                    <select name="" id="" class="form-control" placeholder="Keyword search">
+				                      	<option value="">인원</option>
+				                      	<option value="">1</option>
+				                      	<option value="">2</option>
+				                    </select>
+			                  	</div>
+				            </div>
+				            </div>
+				            
+				            <!-- 일정(계획/후기) -->
+				            <div class="col-md-3">
+		        			<div class="form-group">
+				            	<div class="select-wrap one-third">
+				                	<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+				                    <select name="" id="" class="form-control" placeholder="Keyword search">
+				                    	<option value="">여행 계획</option>
+				                    	<option value="">여행 후기</option>
+				                    </select>
+			                  	</div>
+		        			</div>
+		        			</div>
+	        			</div>
+			         </div> 
+		         
 	                <form action="#" class="p-4 bg-light">
 	                	<div class="form-group">
 	                    	<input type="text" class="form-control" placeholder="여행 제목을 입력하세요"><br>
