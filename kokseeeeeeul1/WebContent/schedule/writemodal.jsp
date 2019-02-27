@@ -3,7 +3,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 
-    <link rel="stylesheet" href="${root}/resources/css/map-search.css">
+    
 <style>
 .modal-content{
     padding-right: 15px;
@@ -25,15 +25,12 @@
 				<hr>
 				
 				<div class="smap_wrap">
-					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
-
 				    <div id="searchMap" style="width:100%;height:300px;position:relative;overflow:hidden;"></div>
-				
 				    <div id="menu_wrap" class="bg_white">
 				        <div class="option">
 				            <div>
 				                <form onsubmit="searchPlaces(); return false;">
-				                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+				                    키워드 : <input type="text" value="용산 맛집" id="keyword" size="15"> 
 				                    <button type="submit">검색하기</button> 
 				                </form>
 				            </div>
@@ -43,6 +40,8 @@
 				        <div id="pagination"></div>
 				    </div>
 				</div>
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
+				<script src="${root}/resources/js/map-search.js"></script>
 				
 				 <div class="form-group">
 					<input type="text" id="localTitle" class="form-control" placeholder="리뷰장소" readonly="readonly">
@@ -74,4 +73,3 @@ $('#summernote').summernote({
   lang: 'ko-KR'   
 });
 </script>
-<script src="${root}/resources/js/map-search.js"></script>

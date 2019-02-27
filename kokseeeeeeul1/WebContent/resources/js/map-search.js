@@ -3,15 +3,6 @@
 // 마커를 담을 배열입니다
 var markers = [];
 
-var selectedMarker = null;
-var clickImage = new daum.maps.MarkerImage(
-	    'https://phinf.pstatic.net/memo/20190225_65/sseul878_1551068626698VMnPU_PNG/marker_red2.png?type=w740',
-	    new daum.maps.Size(40, 42), new daum.maps.Point(13, 37));
-var normalImage = new daum.maps.MarkerImage(
-		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
-		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
-var originImage = null;
-		
 var smapContainer = document.getElementById('searchMap'), // 지도를 표시할 div 
 smapOption = {
     center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -26,6 +17,16 @@ var ps = new daum.maps.services.Places();
 
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new daum.maps.InfoWindow({zIndex:1});
+
+// +) 선택 마커와 이미지 세팅
+var selectedMarker = null;
+var clickImage = new daum.maps.MarkerImage(
+	    'https://phinf.pstatic.net/memo/20190225_65/sseul878_1551068626698VMnPU_PNG/marker_red2.png?type=w740',
+	    new daum.maps.Size(40, 42), new daum.maps.Point(13, 37));
+var normalImage = new daum.maps.MarkerImage(
+		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
+		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+var originImage = null;
 
 // 키워드로 장소를 검색합니다
 searchPlaces();
