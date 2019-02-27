@@ -143,36 +143,26 @@
 				
 				<!-- 지도 -->	<!-- 지도에서 선택하고 n일차, n번째 선택, 등록버튼? -->		
 				<div class="">
-					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e"></script>
+					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
 					<div class="map_wrap">
-    					<div id="daumMap" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
+    					<div id="writeMap" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
 					</div>
 				
 				</div>		
 				<br>
 			
 				<div align="right">
-					<a href="#writeModal" style="text-decoration : none">
-						<input type="button" value="등록하기" class="btn btn-primary py-3 px-5">
-					</a>
+						<input type="button" value="등록하기" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#scheduleWriteModal">
+				
 	        		<input type="button" id="addItem" value="일정추가" onclick="createItem();" />
 	       		 	<input type="button" id="submitItem" value="제출" onclick="submitItem();" />
 	  			</div>
-	  			
-	  			<div class="sl-oneDay">
-					<div class="sl-day">
-						<label class="seul1">1일차 </label><span>2018.08.01</span>
-						<input type="button" id="" value="+일정 추가" class="btn btn-primary" onclick="createItem();"/>
-						<hr>
-					</div>
-		        		<div class="" id="itemBoxWrap"></div>
-	  			</div>
 		        
-				<c:forEach var="i" begin="2" end="6">
+				<c:forEach var="i" begin="1" end="6">
 					<div class="sl-oneDay">
 				        <div class="sl-day">
 				        	<label class="seul1">${i}일차 </label><span>2018.08.0${i}</span>
-				        	<input type="button" id="" value="+일정 추가" class="btn btn-primary" onclick="createItemm(${i});"/>
+				        	<input type="button" id="" value="++일정 추가" class="btn btn-primary" onclick="createItem(${i});"/>
 				        	<hr>
 				        </div>
 				        <div class="" id="itemBoxWrap_${i}"></div>
@@ -194,5 +184,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" ></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" ></script> 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
+
+
 </body>
 </html>

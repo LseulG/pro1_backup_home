@@ -90,7 +90,6 @@ var normalImage = new daum.maps.MarkerImage(
 		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
 var originImage = null;
 		
-
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -118,7 +117,6 @@ function searchPlaces() {
         alert('키워드를 입력해주세요!');
         return false;
     }
-
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
     ps.keywordSearch( keyword, placesSearchCB); 
 }
@@ -126,24 +124,20 @@ function searchPlaces() {
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
     if (status === daum.maps.services.Status.OK) {
-
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
-
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
 
         alert('검색 결과가 존재하지 않습니다.');
         return;
-
     } else if (status === daum.maps.services.Status.ERROR) {
 
         alert('검색 결과 중 오류가 발생했습니다.');
         return;
-
     }
 }
 
@@ -167,7 +161,8 @@ function displayPlaces(places) {
 
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
+            marker = addMarker(placePosition, i);
+            marker.setZIndex(i);
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
         
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -194,8 +189,32 @@ function displayPlaces(places) {
                 infowindow.close();
             };
             
+            itemEl.onmousedown = function () {
+            	var result = confirm('해당 지점을 선택?');
+            	if (result) {
+            		if(selectedMarker != null){
+            			selectedMarker.setImage(originImage);            			
+	            		selectedMarker = marker;
+	            		originImage = marker.getImage();
+	            		marker.setImage(clickImage);
+	            		selectedMarker.setZIndex(888);
+            		} else {
+            			selectedMarker = marker;
+            			originImage = marker.getImage();
+            			marker.setImage(clickImage);
+            			selectedMarker.setZIndex(888);
+            		}
+           		 document.getElementById("locPosition").value = marker.getPosition();
+              	 document.getElementById("locLat").value = marker.getPosition().getLat();
+              	 document.getElementById("locLng").value = marker.getPosition().getLng();
+              	 document.getElementById("locTitle").value = title;
+              	 document.getElementById("locAdress").value = document.getElementById("roadAddress"+(marker.getZIndex()+1)).innerHTML
+              	 document.getElementById("locRoadAdress").value = document.getElementById("jibunAddress"+(marker.getZIndex()+1)).innerHTML
+            	}		
+           	};
+            
             daum.maps.event.addListener(marker, 'click', function() {
-            	alert('tt'); 
+            	alert('cc'); 
             	var result = confirm('해당 지점을 선택?');
             	if (result) {
             		if(selectedMarker != null){
@@ -208,18 +227,12 @@ function displayPlaces(places) {
             			originImage = marker.getImage();
             			marker.setImage(clickImage);
             		}
-            		
-            		searchDetailAddrFromCoords(marker.getPosition(), function(result, status) {
-                	        if (status === daum.maps.services.Status.OK) {
-                	        	document.getElementById("locAdress").value = result[0].address.address_name;
-                	        	document.getElementById("locRoadAdress").value = result[0].road_address.address_name;
-                	        }
-                	 });
-                	 document.getElementById("locPosition").value = marker.getPosition();
-                	 document.getElementById("locLat").value = marker.getPosition().getLat();
-                	 document.getElementById("locLng").value = marker.getPosition().getLng();
-                	 document.getElementById("locTitle").value = title;
-                	 document.getElementById("testAdress").value = places[i].address_name;
+            		document.getElementById("locPosition").value = marker.getPosition();
+                  	 document.getElementById("locLat").value = marker.getPosition().getLat();
+                  	 document.getElementById("locLng").value = marker.getPosition().getLng();
+                  	 document.getElementById("locTitle").value = title;           	 
+                  	 document.getElementById("locAdress").value = document.getElementById("roadAddress"+(marker.getZIndex()+1)).innerHTML
+                  	 document.getElementById("locRoadAdress").value = document.getElementById("jibunAddress"+(marker.getZIndex()+1)).innerHTML
             	} 
             });
         })(marker, places[i].place_name);
@@ -235,13 +248,6 @@ function displayPlaces(places) {
     map.setBounds(bounds);
 }
 
-//주소-좌표 변환 객체를 생성합니다
-var geocoder = new daum.maps.services.Geocoder();
-function searchDetailAddrFromCoords(coords, callback) {
-    // 좌표로 법정동 상세 주소 정보를 요청합니다
-    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-}
-
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
 
@@ -250,12 +256,12 @@ function getListItem(index, places) {
                 '<div class="info">' +
                 '   <h5>' + places.place_name + '</h5>';
 
-    if (places.road_address_name) {
-        itemStr += '    <span>' + places.road_address_name + '</span>' +
-                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    }
+     if (places.road_address_name) {
+         itemStr += '    <span id="roadAddress'+(index+1)+'">' + places.road_address_name + '</span>' +
+                     '   <span class="jibun gray" id="jibunAddress'+(index+1)+'">' +  places.address_name  + '</span>';
+     } else {
+         itemStr += '    <span>' +  places.address_name  + '</span>'; 
+     }
                  
       itemStr += '  <span class="tel">' + places.phone  + '</span>' +
                 '</div>';           
@@ -280,16 +286,14 @@ function addMarker(position, idx, title) {
             position: position, // 마커의 위치
             image: markerImage 
         });
-
-    if(selectedMarker != null){
-    	selectedMarker.setZIndex(1);
-	    selectedMarker.setMap(map);	
-    }
     
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
     
-
+    if(selectedMarker != null){
+    	selectedMarker.setZIndex(888);
+	    selectedMarker.setMap(map);	
+    }
     return marker;
 }
 
@@ -339,7 +343,6 @@ function displayInfowindow(marker, title) {
 
     infowindow.setContent(content);
     infowindow.open(map, marker);
-   
 }
 
  // 검색결과 목록의 자식 Element를 제거하는 함수입니다

@@ -77,6 +77,18 @@
 // 마커를 담을 배열입니다
 var markers = [];
 
+var selectedMarker = null;
+var clickImage = new daum.maps.MarkerImage(
+	    //'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png',
+	    //'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
+	    'https://phinf.pstatic.net/memo/20190225_65/sseul878_1551068626698VMnPU_PNG/marker_red2.png?type=w740',
+	    //new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+	    new daum.maps.Size(40, 42), new daum.maps.Point(13, 37));
+var normalImage = new daum.maps.MarkerImage(
+		'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png	',
+		new daum.maps.Size(24, 35), new daum.maps.Point(13, 37));
+var originImage = null;
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -183,9 +195,9 @@ function displayPlaces(places) {
             };
             
             itemEl.onmousedown = function () {
-            	 document.getElementById("locPosition").value = infowindow.getPosition();
-               	 document.getElementById("locLat").value = infowindow.getPosition().getLat();
-               	 document.getElementById("locLng").value = infowindow.getPosition().getLng();
+            	 document.getElementById("locPosition").value = marker.getPosition();
+               	 document.getElementById("locLat").value = marker.getPosition().getLat();
+               	 document.getElementById("locLng").value = marker.getPosition().getLng();
                	 document.getElementById("locTitle").value = title;
                	 document.getElementById("locAdress").value = document.getElementById("roadAddress"+(marker.getZIndex()+1)).innerHTML
                	 document.getElementById("locRoadAdress").value = document.getElementById("jibunAddress"+(marker.getZIndex()+1)).innerHTML
@@ -194,9 +206,9 @@ function displayPlaces(places) {
             
           
              daum.maps.event.addListener(marker, 'click', function(mouseEvent) {
-           	 document.getElementById("locPosition").value = infowindow.getPosition();
-           	 document.getElementById("locLat").value = infowindow.getPosition().getLat();
-           	 document.getElementById("locLng").value = infowindow.getPosition().getLng();
+           	 document.getElementById("locPosition").value = marker.getPosition();
+           	 document.getElementById("locLat").value = marker.getPosition().getLat();
+           	 document.getElementById("locLng").value = marker.getPosition().getLng();
            	 document.getElementById("locTitle").value = title;           	 
            	 document.getElementById("locAdress").value = document.getElementById("roadAddress"+(marker.getZIndex()+1)).innerHTML
            	 document.getElementById("locRoadAdress").value = document.getElementById("jibunAddress"+(marker.getZIndex()+1)).innerHTML
@@ -213,14 +225,6 @@ function displayPlaces(places) {
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
     map.setBounds(bounds);  
 }
-
-
-function searchDetailAddrFromCoords(coords, callback) {
-	var geocoder = new daum.maps.services.Geocoder();
-    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-}
-
-
 
 
 // 검색결과 항목을 Element로 반환하는 함수입니다

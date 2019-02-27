@@ -41,13 +41,23 @@
 
 	var fullHeight = function() {
 
-		$('.js-fullheight').css('height', $(window).height());
+		$('.js-fullheight').css('height', $(window).height()/2);
 		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
+			$('.js-fullheight').css('height', $(window).height()/2);
 		});
 
 	};
 	fullHeight();
+	
+	var fullHeight2 = function() {
+		
+		$('.js-fullheight2').css('height', $(window).height());
+		$(window).resize(function(){
+			$('.js-fullheight2').css('height', $(window).height());
+		});
+		
+	};
+	fullHeight2();
 
 	// loader
 	var loader = function() {
@@ -339,7 +349,7 @@
 
 
   $('#checkin_date, #checkout_date').datepicker({
-	  'format': 'yyyy/mm/dd',
+	  'format': 'm/d/yyyy',
 	  'autoclose': true
 	});
 
