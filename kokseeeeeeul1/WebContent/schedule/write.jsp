@@ -7,7 +7,6 @@
   	<%@ include file="/include/link.jsp"%>
   	<%@ include file="/include/loader.jsp"%> 
 
-  	<link rel="stylesheet" href="${root}/resources/css/community.css">
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
   	<link rel="stylesheet" href="${root}/resources/css/sl-map.css">  
   	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>

@@ -10,6 +10,7 @@
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
+   <%@ include file="/schedule/writemodal2.jsp"%>
 <!-- 이미지 -->
     <div class="hero-wrap js-fullheight" style="background-image: url('${root}/resources/images/bg_3.jpg');">
       <div class="overlay"></div>
@@ -133,6 +134,10 @@
         	<div align="right">
         		<span>인기순</span> | <span>최신순</span>
         	</div>
+        	<div align="right">
+        	<input type="button" value="등록하기" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#sscheduleWriteModal">
+        	</div>
+        	
         	<div class="row">
         		<c:forEach var="i" begin="1" end="6">
 					<div class="col-md-4 ftco-animate destination">
@@ -184,6 +189,7 @@
 <!-- 내용끝 -->
 
 <script src="${root}/resources/js/sl-schedule-list.js"></script>
+
 <%@ include file="/include/footer.jsp"%>   
 <%@ include file="/include/arrowup.jsp"%>
 </body>

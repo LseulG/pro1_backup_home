@@ -12,7 +12,7 @@
     padding-top: 15px;
 }
 </style>
-<div class="modal fade" id="scheduleWriteModal" role="dialog" data-backdrop="static">
+<div class="modal fade" id="sscheduleWriteModal" role="dialog" data-backdrop="static">
 	<div class="modal-dialog" style="max-width: 1200px; width: 1000px;">
 	
 
@@ -25,8 +25,6 @@
 				<hr>
 				
 				<div class="smap_wrap">
-					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
-
 				    <div id="searchMap" style="width:100%;height:300px;position:relative;overflow:hidden;"></div>
 				
 				    <div id="menu_wrap" class="bg_white">
