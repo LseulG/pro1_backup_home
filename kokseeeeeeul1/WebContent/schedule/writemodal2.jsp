@@ -3,7 +3,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 
-    <link rel="stylesheet" href="${root}/resources/css/map-search.css">
+    <link rel="stylesheet" href="${root}/resources/css/map-search2.css">
 <style>
 .modal-content{
     padding-right: 15px;
@@ -24,8 +24,8 @@
 				</div>
 				<hr>
 				
-				<div class="smap_wrap">
-				    <div id="searchMap" style="width:100%;height:300px;position:relative;overflow:hidden;"></div>
+				<div class="map_wrap">
+				    <div id="earchMap" style="width:100%;height:300px;position:relative;overflow:hidden;"></div>
 				    <div id="menu_wrap" class="bg_white">
 				        <div class="option">
 				            <div>
@@ -41,7 +41,7 @@
 				    </div>
 				</div>
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
-				<script src="${root}/resources/js/map-search.js"></script>
+				<script src="${root}/resources/js/map-search2.js"></script>
 				
 				 <div class="form-group">
 					<input type="text" id="localTitle" class="form-control" placeholder="리뷰장소" readonly="readonly">

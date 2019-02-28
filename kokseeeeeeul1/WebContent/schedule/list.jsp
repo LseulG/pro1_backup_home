@@ -7,6 +7,7 @@
   	<%@ include file="/include/link.jsp"%>
   	<%@ include file="/include/loader.jsp"%> 
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
+  	
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
@@ -135,7 +136,10 @@
         		<span>인기순</span> | <span>최신순</span>
         	</div>
         	<div align="right">
-        	<input type="button" value="등록하기" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#sscheduleWriteModal">
+        	<a href="${root}/schedule/write.jsp">
+        	<input type="button" value="일정만들기" id="scheduleWrite" class="btn btn-primary py-3 px-5">
+        	</a>
+        	<input type="button" value="등록하기" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#9scheduleWriteModal">
         	</div>
         	
         	<div class="row">

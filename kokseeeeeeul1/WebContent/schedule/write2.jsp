@@ -65,8 +65,40 @@ function dateDiff(start, end){
 	
 	return days;
 }
+
+	//대표사진을 클릭하면 input type="file"을 클릭하는 메소드
+	function uploadFile(){  		  		
+		  	document.getElementById("uploadFile").click();
+	}
+	
+	//파일을 업로드가 됬는지 on change로 알아냄
+$(function() {
+    $("#uploadFile").on('change', function(){
+        readURL(this);
+    });
+})
+	
+	//파일을 읽어서 대표사진태그에 이미지 URL 바꿔주는 메소드
+	function readURL(input) {  		 
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();  	 
+	        reader.onload = function (e) {
+	            $('#mainImg').attr('style',"background-image: url('"+e.target.result+"');");  	         	         
+	        }  	 
+	        reader.readAsDataURL(input.files[0]);
+	        }
+	}  	
+	
+	//일차 토글 메소드
+function showAndHide(num){	
+	$(".seul1_Item"+num).toggle('slow');	
+}
  </script>
- 
+   	<style type="text/css">
+  		#uploadFile{display: none;}
+  	</style>
+  	
+  	
   </head>
   <body>
    <%@ include file="/include/nav.jsp"%>
@@ -94,9 +126,10 @@ function dateDiff(start, end){
 		<div class="sidebar-wrap bg-light ftco-animate">
 			<h3 class="heading mb-4">대표 사진</h3>
 			<div class="ftco-animate destination">
-		    		<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('${root}/resources/images/destination-1.jpg');">
+		    		<a href="javascript:uploadFile();" id="mainImg" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('${root}/resources/images/destination-1.jpg');">
 			    		<div class="icon d-flex justify-content-center align-items-center">
 	    					<span class="icon-plus"></span>
+	    					<input type="file" id="uploadFile" name="uploadFile"/>
 	    				</div>
 		    		</a>
 			</div>
@@ -210,11 +243,11 @@ function dateDiff(start, end){
 				<c:forEach var="i" begin="1" end="6">
 					<div class="sl-oneDay">
 				        <div class="sl-day">
-				        	<label class="seul1">${i}일차 </label><span>2018.08.0${i}</span>
+				        	<label class="seul1" onclick="showAndHide(${i})">${i}일차 </label><span>2018.08.0${i}</span>
 				        	<input type="button" id="" value="+ 일정 추가" class="btn btn-primary scheduleAdd" onclick="createItem(${i});"/>
 				        	<hr>
 				        </div>
-				        <div class="" id="itemBoxWrap_${i}"></div>
+				        <div class="seul1_Item${i}" id="itemBoxWrap_${i}"></div>
 					</div>
 				</c:forEach>
             
@@ -226,7 +259,11 @@ function dateDiff(start, end){
 	</div>
 	
 		<div align="center">
-					<input type="button" value="등록하기" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#scheduleWriteModal">
+					<input type="button" value="+일정추가" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#scheduleWriteModal">
+					
+					<a href="${root}/schedule/list.jsp">
+						<input type="button" value="등록하기" class="btn btn-primary py-3 px-5">
+					</a>
 				
 	        		<input type="button" id="addItem" value="일정추가" onclick="createItem();" />
 	       		 	<input type="button" id="submitItem" value="제출" onclick="submitItem();" />
