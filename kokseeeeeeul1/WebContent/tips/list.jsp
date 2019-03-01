@@ -6,6 +6,7 @@
 <head>
 <title>회원관리</title>
 <%@ include file="/include/link.jsp"%> 
+<%@ include file="/include/loader.jsp"%>   
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/table.css">  
 </head>
 
@@ -39,7 +40,10 @@
 		   			</div>   		
 		   		</form>
 		   		<!-- 검색  끝 -->
-			   			   					
+			   			   					<a href="${root}/tips/write.jsp" >글작성
+							</a>
+							<a href="${root}/tips/view.jsp" >글보기
+							</a>
 				<div class="table100">				
 					<table>
 						<thead>
@@ -63,6 +67,7 @@
 								</tr>
 								<tr>
 									<td class="column1">2017-09-28 05:57</td>
+									<a href="${root}/tips/view.jsp">
 									<td class="column2">200397</td>
 									<td class="column3">Samsung S8 Black</td>
 									<td class="column4">$756.00</td>
@@ -196,7 +201,7 @@
 </section>
 
 <%@ include file="/include/footer.jsp"%>
-<%@ include file="/include/loader.jsp"%>    
+ 
 <%@ include file="/include/arrowup.jsp"%>
     
 </body>

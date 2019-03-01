@@ -18,7 +18,7 @@
     padding-top: 15px;
 }
 </style>
-<div class="modal fade" id="reviewWriteModal" role="dialog" data-backdrop="static">
+<div class="modal fade" id="modifyWriteModal" role="dialog" data-backdrop="static">
 	<div class="modal-dialog" style="max-width: 1000px; width: 800px;">
 	
 
@@ -26,11 +26,11 @@
 		<div class="modal-content">
 			<div>
 				<div align="center">
-				<h3>리뷰 작성</h3>
+				<h3>리뷰 수정</h3>
 				</div>
 				<hr>
 				 <div class="form-group">
-					<input type="text" class="form-control" placeholder="제목">
+					<input type="text" class="form-control" placeholder="이전제목이 여기적어집니다. 수정.">
 				</div>
 				
 				<div id="summernote"></div>
@@ -50,7 +50,7 @@
 
 <script>
 $('#summernote').summernote({
-  placeholder: '내용을 적어주세요.',
+  placeholder: '이전내용이 여기적어집니다. 수정.',
   dialogsInBody: true,
   tabsize: 2,
   height: 200,
