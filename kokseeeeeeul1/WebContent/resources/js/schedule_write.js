@@ -97,7 +97,7 @@ function createItem(numm){
     )
 	.append("<label class='modifyBox'>수정</label>")		// 아이템에 삭제 버튼 추가
 	.append("<label class='deleteBox'>삭제</label>")		// 아이템에 삭제 버튼 추가
-	.append("<div><span class='sl-loc-cont'>과여언 들어간다</span></div>")
+	.append("<div><span class='sl-loc-cont'>과여언 들어간다"+numm+"</span></div>")
 	.find(".deleteBox").click(function() {		// 삭제 버튼을 클릭했을 때 동작 지정. 아이템에 포함된 입력 필드에 값이 있으면 정말 삭제할지 물어봄
 /*	        var valueCheck = false;
         $(this).parent().find('input').each(function() {

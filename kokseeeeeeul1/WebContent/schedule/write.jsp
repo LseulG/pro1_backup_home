@@ -17,26 +17,20 @@ var tripEnd = null;
 var tripType = null;
 var tripPersons = null;
 var tripThema = null;
+var tripDays = 0;
+var preTripDays = 0;
+var setCnt = 0;
  
 $(document).ready(function() {
-	var tripDays = 2;
 	$("#setSchedule").click(function(){
 		setScheduleInfo();
-		
-		if (tripStart != null){
-			// 일정을 만들었을 경우
-			
-		} else {
-			// 만들지 않았을 경우
-			
-		}
 	});
 	
 	$("#scheduleTitle").click(function(){
 		if (tripStart != null){
 			this.readOnly = false;
 		} else {
-			alert('좌측에서 일정을 만들어주세요.');
+			alert('좌측에서 일정을 만들어주세요.!');
 		}
 	});
 	$("#scheduleMsg").click(function(){
@@ -67,11 +61,22 @@ function setScheduleInfo(){
 	} else if(tripPersons == "no" || tripThema == "no") {
 		alert("여행 인원과 테마를 선택해주세요.");
 	} else {
+		if(setCnt != 0){
+			alert(tripType + "을(를) 수정하시겠습니까?\n" 
+					+ "(수정된 여행일수가 적을 경우 해당일차 내용은 삭제됩니다.)");
+		} else {
+			alert(tripType + "을(를) 만드시겠습니까?");
+		}
+		
+		
 		var result = confirm("여행기간: "+ tripStart +"-"+ tripEnd +" ("+ tripDays +"일)\n" + 
 				"여행 인원: "+ tripPersons + "\n" +
 				"여행 테마: "+ tripThema + "\n" +
 				"위의 정보로 '"+ tripType +"'을(를) 만들겠습니까?");
 		if(result){
+			setCnt = 1;
+			preTripDays = tripDays;
+			
 			var setStr = tripType + "  |  " +
 					tripStart +"-"+ tripEnd +" ("+ tripDays +"일)" + 
 					"  |  " + tripPersons + "  |  " + tripThema ;
@@ -235,22 +240,9 @@ function dateDiff(start, end){
 				
 				</div>		
 				<br>
-	<!-- 
-				<c:forEach var="i" begin="1" end="2">
-					<div class="sl-oneDay">
-				        <div class="sl-day">
-				        	<label class="seul1" onclick="showAndHide(${i})">${i}일차<span>2018.08.0${i}</span></label>
-				        	<input type="button" id="" value="+일정 추가" class="btn btn-primary scheduleAdd" onclick="createItem(${i});"/>
-				        	<hr>
-				        </div>
-				        <div class="seul1_Item${i}" id="itemBoxWrap_${i}"></div>
-					</div>
-				</c:forEach>				
-	 --> 
-	 		
             	
+            	<!-- 일차별 내용 -->	
             	<div class="daysAdd" id="daysAdd"></div>
-            		
             
 			</div>
 		</div>
