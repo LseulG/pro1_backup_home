@@ -6,35 +6,33 @@
     <title>방방콕콕 - 여행 일정 쓰기</title>
   	<%@ include file="/include/link.jsp"%>
   	<%@ include file="/include/loader.jsp"%> 
-
   	<link rel="stylesheet" href="${root}/resources/css/schedule.css">
-  	<link rel="stylesheet" href="${root}/resources/css/sl-map.css">  
   	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
- <script src="${root}/resources/js/schedule_write.js"></script>
- <script type="text/javascript">
-var tripStart = null;
-var tripEnd = null;
-var tripType = null;
-var tripPersons = null;
-var tripThema = null;
-var tripDays = 0;
-var preTripDays = 0;
-var setCnt = 0;
- 
+ 	<script src="${root}/resources/js/schedule_write.js"></script>
+<script type="text/javascript">
 $(document).ready(function() {
+	var tripStart = null;
+	var tripEnd = null;
+	var tripType = null;
+	var tripPersons = null;
+	var tripThema = null;
+	var tripDays = 0;
+	var preTripDays = 0;
+	var setCnt = 0;
+	
 	$("#setSchedule").click(function(){
 		setScheduleInfo();
 	});
 	
 	$("#scheduleTitle").click(function(){
-		if (tripStart != null){
+		if (setCnt != 0){
 			this.readOnly = false;
 		} else {
 			alert('좌측에서 일정을 만들어주세요.!');
 		}
 	});
 	$("#scheduleMsg").click(function(){
-		if (tripStart != null){
+		if (setCnt != 0){
 			this.readOnly = false;
 		} else {
 			alert('좌측에서 일정을 만들어주세요.');
@@ -61,27 +59,25 @@ function setScheduleInfo(){
 	} else if(tripPersons == "no" || tripThema == "no") {
 		alert("여행 인원과 테마를 선택해주세요.");
 	} else {
+		var setStr = null;
 		if(setCnt != 0){
-			alert(tripType + "을(를) 수정하시겠습니까?\n" 
-					+ "(수정된 여행일수가 적을 경우 해당일차 내용은 삭제됩니다.)");
+			setStr = tripStart +"-"+ tripEnd +" ("+ tripDays +"일)의\n" +
+					tripType +"을(를) 수정하시겠습니까?\n" 
+					+ "(여행일이 수정될 경우 작성된 내용이 지워질 수 있습니다.)";
 		} else {
-			alert(tripType + "을(를) 만드시겠습니까?");
-		}
+			setStr = tripStart +"-"+ tripEnd +" ("+ tripDays +"일)의\n" +
+					tripType + "을(를) 만드시겠습니까?" ;
+		}		
 		
-		
-		var result = confirm("여행기간: "+ tripStart +"-"+ tripEnd +" ("+ tripDays +"일)\n" + 
-				"여행 인원: "+ tripPersons + "\n" +
-				"여행 테마: "+ tripThema + "\n" +
-				"위의 정보로 '"+ tripType +"'을(를) 만들겠습니까?");
+		var result = confirm(setStr);
 		if(result){
 			setCnt = 1;
 			preTripDays = tripDays;
 			
-			var setStr = tripType + "  |  " +
-					tripStart +"-"+ tripEnd +" ("+ tripDays +"일)" + 
-					"  |  " + tripPersons + "  |  " + tripThema ;
-			
+			var setStr = tripStart +"-"+ tripEnd +" ("+ tripDays +"일)" + 
+					tripType + "  |  " + "  |  " + tripPersons + "  |  " + tripThema ;
 			$("#scheduleSetting").text(setStr);
+			
 			addDays(tripDays);
 		} 
 	}
@@ -96,12 +92,25 @@ function dateDiff(start, end){
 	
 	return days;
 }
- </script>
- 
+
+function selectChange(){
+	alert("oh");
+	mapRemove();
+	mapView(positions_2);
+}
+</script>
 <style type="text/css">
 	#uploadFile{display: none;}
+	#daySelectWrap {
+	position:absolute;top:330px;left:30px;width:110px;height:45px;
+	margin:10px 0 30px 10px;padding:2px;overflow-y:auto;
+	background:#f85959;
+	z-index: 1;font-size:12px;border-radius: 5px;
+	}
+	#daySelectWrap #mapDay {
+		width:106px; height:41px; padding-left: 10px; border-radius: 5px;
+	}
 </style>
-
 </head>
 <body>
    <%@ include file="/include/nav.jsp"%>
@@ -236,6 +245,15 @@ function dateDiff(start, end){
 					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
 					<div class="map_wrap">
     					<div id="writeMap" style="width:100%;height:400px;position:relative;overflow:hidden;"></div>
+						<div id="daySelectWrap" class="bg_white">
+					        <div class="select-wrap">
+					            <select name="" id="mapDay" class="a" onchange="selectChange()">
+					            	<option value="day_1">1일차</option>
+					            	<option value="day_2">2일차</option>
+					            	<option value="day_3">3일차</option>
+					            </select>
+							</div>
+					    </div>
 					</div>
 				
 				</div>		

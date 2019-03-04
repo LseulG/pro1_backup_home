@@ -5,14 +5,35 @@
 <head>
     <meta charset="utf-8">
     <title>원, 선, 사각형, 다각형 표시하기</title>
-    
+    <style>
+    #menu_wrap {
+    	position:absolute;top:0;left:0;bottom:0;width:150px;height:30px;
+    	margin:20px 0 0 20px;padding:5px;overflow-y:auto;
+    	background:rgba(255, 255, 255, 0.7);
+    	z-index: 1;font-size:12px;border-radius: 5px;
+    }
+    #menu_wrap .select-wrap .form-control {
+    	width:150px; height:30px; padding-left: 10px;border-radius: 5px;
+	}
+    </style>
 </head>
 <body>
-<div id="map" style="width:100%;height:350px;"></div>    
+<div class="map_wrap">
+	<div id="ddmap" style="width:100%;height:350px;"></div>  
+	<div id="menu_wrap" class="bg_white">
+        <div class="select-wrap">
+            <select name="" id="mapDay" class="form-control" onchange="selectChange2()">
+            	<option value="day_1">1일차</option>
+            	<option value="day_2">2일차</option>
+            	<option value="day_3">3일차</option>
+            </select>
+		</div>
+    </div>
+</div>  
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ca50421e20fdf6befdf1ab193f76de7e&libraries=services"></script>
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+var mapContainer = document.getElementById('ddmap'), // 지도를 표시할 div 
     mapOption = { 
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
@@ -33,6 +54,21 @@ var positions = [
     {
         title: '근린공원',
         latlng: new daum.maps.LatLng(33.451393, 126.570738)
+    }
+];
+
+var positions2 = [
+    {
+        title: '삼성혈', 
+        latlng: new daum.maps.LatLng(33.50447265411531, 126.52866057839657)
+    },
+    {
+        title: '제주도 민속 자연사 박물관', 
+        latlng: new daum.maps.LatLng(33.506502954430196, 126.53149082314155)
+    },
+    {
+        title: '제주문예회관',
+        latlng: new daum.maps.LatLng(33.504605724083916 , 126.53524624985677 )
     }
 ];
 

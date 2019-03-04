@@ -126,10 +126,10 @@ reorder(numm);
 
 /** 아이템 박스 작성8 */
 // itemBox 내에 번호를 표시할 itemNum과 입력필드
-function createBox(numm) {
-    var contents = "<div class='itemBox"+numm+" sl-loc loc-updown'>"
-                 + "<span class='itemNum"+numm+"'></span> "
-                 + "<label class='seul2' name='item"+numm+"'><i class='flaticon-fork'></i> 식당맛집식도락</label>"
+function createBox(day) {
+    var contents = "<div class='itemBox"+day+" sl-loc loc-updown' id='itemBox"+day+"_num'>"
+                 + "<span class='itemNum"+day+"'></span> "
+                 + "<label class='seul2' name='item"+day+"'><i class='flaticon-fork'></i> 식당맛집식도락</label>"
                  + "</div>";
     return contents;
 }

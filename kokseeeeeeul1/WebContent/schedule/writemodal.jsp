@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
-    <link rel="stylesheet" href="${root}/resources/css/map-search.css">
+    <link rel="stylesheet" href="${root}/resources/css/schedule_write_modal.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
  <script type="text/javascript">
+
 function searchClick(){
 	searchMap();
 }
+
+$("body").on("hidden.bs.modal", ".modal", function () {
+    document.getElementById("localTitle").value = null;
+    //document.getElementById("summernote").value = null;
+    selectedMarker = null;
+    document.getElementById("keyword").value = "인천 맛집";
+ });
+ 
 </script>
 <style>
 .modal-content{
@@ -40,7 +49,7 @@ function searchClick(){
 				            </div>
 				        </div>
 				        <hr>
-				        <ul id="placesList"></ul>
+				        <ul id="splacesList"></ul>
 				        <div id="pagination"></div>
 				    </div>
 				</div>
@@ -70,10 +79,11 @@ function searchClick(){
 
 <script>
 $('#summernote').summernote({
-  placeholder: '내용을 적어주세요.',
-  dialogsInBody: true,
-  tabsize: 2,
-  height: 200,
-  lang: 'ko-KR'   
+	  placeholder: '내용을 적어주세요.',
+	  dialogsInBody: true,
+	  tabsize: 2,
+	  height: 200,
+	  lang: 'ko-KR'   
 });
+
 </script>
