@@ -8,6 +8,10 @@ var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니�
 var markerArr = [];
 var polyline = null;
 
+//지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+var zoomControl = new daum.maps.ZoomControl();
+map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+
 //마커를 표시할 위치와 title 객체 배열입니다 
 var positions_1 = [
     {
@@ -67,6 +71,9 @@ function mapView(positions){
 	    linePath.push(new daum.maps.LatLng(positions[i].latlng.getLat(), 
 	    									positions[i].latlng.getLng()));
 	}
+	var moveLatLon = new daum.maps.LatLng(positions[0].latlng.getLat(), 
+			positions[0].latlng.getLng());
+	map.setCenter(moveLatLon);
 	
 	// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
 	var linePath8 = [
@@ -88,7 +95,7 @@ function mapView(positions){
 
 	// 지도에 선을 표시합니다 
 	polyline.setMap(map);  
-
+	
 }
 
 function mapRemove(){

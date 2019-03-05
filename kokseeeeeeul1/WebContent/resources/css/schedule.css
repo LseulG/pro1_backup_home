@@ -21,24 +21,24 @@
 .commBtn {
 }
 
+.comment-list .slchild {
+    padding: 20px 0 0 20px;
+    margin: 0;
+    float: left;
+    width: 100%; }
+}
 /* -------------------------------*/
-
-
 
 .ml-auto,readystate http status
 .mx-auto {
   margin-left: auto !important; 
   color: #f85959;
-  font-weight: bold;}
-  
-  
-  /* border-top: 1px solid transparent; 추가추가추가 */
-  background: #fff; } 
+  font-weight: bold;
+}
 .destination .text {
   border: 1px solid #e6e6e6;
-  /* border-top: 1px solid transparent; 추가추가추가 */
-  background: #fff; }
-  /*추가추가*/
+  background: #fff; 
+ }
   .destination .text .days {
   margin: 0px;
 } 
@@ -47,7 +47,6 @@
   font-size: 13px;
   color: black; }
       
-     /* 추가추가 */
 .tagcloud a.location {
 	color: #cd2c6c;
 	border: 1px solid #cd2c6c;
@@ -61,15 +60,6 @@
 	border: 1px solid #332679;
 }
  
- 
-.comment-list .slchild {
-    padding: 20px 0 0 20px;
-    margin: 0;
-    float: left;
-    width: 100%; }
-	
-}
-
 .slday-title {
   font-family: inherit;
   font-weight: 500;
@@ -121,7 +111,8 @@
       border-radius: 50%;
       border: 2px solid #fdd3d3; }
 .sl-loc-cont {
-	padding: 0 0 10px 8px;	
+	padding: 0 0 10px 3px;
+	font-size: 14px;	
 }
 .loc-updown a {
 	font-size: 0.5rem;
@@ -190,3 +181,5 @@
 	.seul2 {
 		margin-left: 8px;
 	}
+	
+}
