@@ -90,6 +90,7 @@ $(function() {
 function reorder(numm) {
     $(".itemBox"+numm).each(function(i, box) {
         $(box).find(".itemNum"+numm).html(i + 1);
+        //$(".itemNum"+numm).attr("id","day"+numm+"_step"+(i+1));
     });
 }
 
@@ -99,7 +100,7 @@ function createItem(numm){
     .appendTo("#itemBoxWrap_"+ numm) // createBox 함수 호출하여 아이템을 구성할 태그 반환 받아 jQuery 객체로 생성. 만들어진 아이템을 id가 itemBoxWrap인 태그에 추가
     .hover( 	// 아이템에 마우스 오버와 아웃시에 동작 지정
         function() {	// 오버시 배경색 바꾸고 삭제 버튼 보여줌
-            $(this).css('backgroundColor', '#dee0e2');
+            $(this).css('backgroundColor', '#ffecec');
             $(this).find('.modifyBox').show();
             $(this).find('.deleteBox').show();
         },
@@ -165,10 +166,11 @@ function readURL(input) {
 /*--------------------*/
 
 /*-------- 토글 --------*/
-//일차 토글 메소드
+// 일차 토글 메소드
 function showAndHide(num){	
 	$(".seul1_Item"+num).toggle('slow');	
 }
+// 
 /*-------------------*/
 	
 	
