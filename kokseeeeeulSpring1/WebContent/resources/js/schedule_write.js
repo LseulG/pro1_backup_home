@@ -60,9 +60,7 @@ function modalWrite(){
 	createItem(modalDay);
 	$("#itemTitle"+modalDay+"_"+tmp).html("<i class='flaticon-"+icon+"'></i> "+title);
 	$("#itemCont"+modalDay+"_"+tmp).html(cont);	
-	//$("#itemCont"+modalDay+"_"+tmp).css('widht','100%');	
 	$("div > p > img").css('widht','100%');
-	tmp++;
 }
 
 /*-------- 여행지 추가삭제 --------*/
@@ -96,6 +94,7 @@ function reorder(numm) {
         $(box).find(".itemNum"+numm).html(i + 1);
         $(box).find(".itemTitle"+numm).attr("id","itemTitle"+numm+"_"+(i + 1));
         $(box).find(".itemCont"+numm).attr("id","itemCont"+numm+"_"+(i + 1));
+        tmp = (i + 1);
     });
 }
 
