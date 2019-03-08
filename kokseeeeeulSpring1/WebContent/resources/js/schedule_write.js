@@ -1,3 +1,100 @@
+var setCnt = 0;
+var tripStart = null;
+var tripEnd = null;
+var tripType = null;
+var tripPersons = null;
+var tripThema = null;
+var tripDays = 0;
+var preTripDays = 0;
+$(document).ready(function() {	
+	$("#setSchedule").click(function(){
+		setScheduleInfo();
+	});
+	
+	$("#scheduleTitle").click(function(){
+		if (setCnt != 0){
+			this.readOnly = false;
+		} else {
+			alert('좌측에서 일정을 만들어주세요.!');
+		}
+	});
+	$("#scheduleMsg").click(function(){
+		if (setCnt != 0){
+			this.readOnly = false;
+		} else {
+			alert('좌측에서 일정을 만들어주세요.');
+		}
+	});
+});
+
+function setScheduleInfo(){
+	tripType = $("#tripType").val();
+	tripStart = $("#checkin_date").val();
+	tripEnd = $("#checkout_date").val();
+	tripPersons = $("#tripPersons").val();
+	tripThema = $("#tripThema").val();
+	
+	// 여행 일 수 계산
+	var startDay = new Date(tripStart);	
+	var endDay = new Date(tripEnd);
+	tripDays = dateDiff(startDay, endDay);
+	
+	if (tripStart == "" || tripEnd == "") {
+		alert("출발일과 도착일을 선택해주세요.");
+	} else if(tripDays < 1) {
+		alert("도착일은 출발일 이후 날짜만 가능합니다.\n" + "(당일치기는 출발일과 도착일을 같은 날짜로 지정해주세요.)")
+	} else if(tripPersons == "no" || tripThema == "no") {
+		alert("여행 인원과 테마를 선택해주세요.");
+	} else {
+		var setStr = null;
+		if(setCnt != 0){
+			setStr = tripStart +"-"+ tripEnd +" ("+ tripDays +"일)의\n" +
+					tripType +"으로 수정하시겠습니까?\n" 
+					+ "(여행일이 수정될 경우 작성된 내용이 지워질 수 있습니다.)";
+		} else {
+			setStr = tripStart +"-"+ tripEnd +" ("+ tripDays +"일)의\n" +
+					tripType + "을(를) 만드시겠습니까?" ;
+		}		
+		
+		var result = confirm(setStr);
+		if(result){
+			
+			if(preTripDays == 0){	// 처음 세팅
+				setDays(tripDays);
+			} else if(preTripDays < tripDays){		// 여행일수 늘어나면  3 > 5
+				addDays(preTripDays,tripDays);
+			} else if(preTripDays > tripDays){		// 여행일수 줄어들면 5 > 3
+				removeDays(preTripDays,tripDays);
+			} else {	// 여행일수 같으면 3 > 3
+				//변화 x
+			}
+			
+			setCnt = 1;
+			preTripDays = tripDays;
+						
+			var setStr = tripStart +"-"+ tripEnd +" ("+ tripDays +"일)"  
+					+"  ,  "+ tripType  +"  ,  "+ tripPersons +"  ,  "+ tripThema ;
+			$("#scheduleSetting").text(setStr);
+		} 
+	}
+}
+
+// 여행 일수 계산 함수
+function dateDiff(start, end){
+	var diff = end - start;
+	var day = 1000 * 60 * 60 * 24;	//밀리세컨초 * 초 * 분 * 시간
+	
+	var days = parseInt(diff/day) + 1;
+	
+	return days;
+}
+
+function selectChange(){
+	alert("oh");
+	mapRemove();
+	mapView(positions_2);
+}
+
 
 /*-------- 여행일수 변경 --------*/
 function addTag(num){
