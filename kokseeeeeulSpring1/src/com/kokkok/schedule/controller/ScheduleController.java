@@ -28,7 +28,7 @@ public class ScheduleController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/schedule/write.kok",method=RequestMethod.POST)
+	@RequestMapping(value="/schedule/write.kok",method=RequestMethod.GET)
 	public ModelAndView scheduleWrite(HttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mav = new ModelAndView();
@@ -38,7 +38,7 @@ public class ScheduleController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/schedule/view.kok",method=RequestMethod.POST)
+	@RequestMapping(value="/schedule/view.kok",method=RequestMethod.GET)
 	public ModelAndView scheduleView(HttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mav = new ModelAndView();
@@ -48,7 +48,7 @@ public class ScheduleController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/schedule/writeOk.kok",method=RequestMethod.POST)
+	@RequestMapping(value="/schedule/writeOk.kok",method=RequestMethod.GET)
 	public ModelAndView scheduleWriteOk(HttpServletRequest request, HttpServletResponse response,ScheduleDto scheduleDto) {
 		
 		ModelAndView mav = new ModelAndView();

@@ -5,7 +5,6 @@ function addTag(num){
 		"<div class='sl-day' id='sl_day_"+num+"'>" +
 		"<label class='seul1' onclick='dayTogg("+num+")'>"+num+"일차<span>2018.08.0"+num+"</span></label>" +
 		"<input type='button' id='' value='+일정 추가' class='btn btn-primary scheduleAdd' onclick='createItem("+num+");'/>" +
-		"<input type='button' id='' value='내용 접기' class='btn btn-primary scheduleAdd' onclick='reviewTogg("+num+")'/>" +
 		"<input type='button' id='' value='+모달 추가' class='btn btn-primary scheduleAdd' data-toggle='modal' data-target='#scheduleWriteModal' onclick='modalSetDay("+num+");'/>" +
 		"<hr>" +
 		"</div>" +
@@ -60,9 +59,8 @@ function modalWrite(){
 	createItem(modalDay);
 	$("#itemTitle"+modalDay+"_"+tmp).html("<i class='flaticon-"+icon+"'></i> "+title);
 	$("#itemCont"+modalDay+"_"+tmp).html(cont);	
-	//$("#itemCont"+modalDay+"_"+tmp).css('widht','100%');	
 	$("div > p > img").css('widht','100%');
-	tmp++;
+	
 }
 
 /*-------- 여행지 추가삭제 --------*/
@@ -96,6 +94,7 @@ function reorder(numm) {
         $(box).find(".itemNum"+numm).html(i + 1);
         $(box).find(".itemTitle"+numm).attr("id","itemTitle"+numm+"_"+(i + 1));
         $(box).find(".itemCont"+numm).attr("id","itemCont"+numm+"_"+(i + 1));
+        tmp=(i + 1);
     });
 }
 
@@ -138,7 +137,7 @@ reorder(numm);
 function createBox(day) {
     var contents = "<div class='itemBox"+day+" sl-loc loc-updown'>"
                  + "<span class='itemNum"+day+"'></span> "
-                 + "<label class='seul2 itemTitle"+day+"' name='item"+day+"' onclick='reviewTogg("+day+")'><i class='flaticon-fork'></i> 식당맛집식도락</label>"
+                 + "<label class='seul2 itemTitle"+day+"' name='item"+day+"'><i class='flaticon-fork'></i> 식당맛집식도락</label>"
                  + "</div>";
     return contents;
 }
@@ -174,9 +173,12 @@ function readURL(input) {
 function dayTogg(num){	
 	$(".seul1_Item"+num).toggle('slow');	
 }
-function reviewTogg(num){
-	$(".itemCont"+num).toggle('slow');
-}
+
+$(document).on("click", ".seul2", function() {		
+	 $("#"+this.id).siblings("div").toggle('fast');
+	 
+}); 
+
 // 
 /*-------------------*/
 	

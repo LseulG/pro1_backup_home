@@ -277,8 +277,6 @@ function selectChange(){
 	</div>
 	
 		<div class="writeEnd" align="center">		
-					<input type="button" value="+일정추가" class="btn btn-primary py-3 px-5" data-toggle="modal" data-target="#scheduleWriteModal">
-					
 					<a href="${root}/schedule/view.jsp">
 						<input type="button" value="등록하기" class="btn btn-primary py-3 px-5" onclick="submitItem();">
 					</a>
